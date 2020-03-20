@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using RegistrationService.Data.Events;
 
 namespace RegistrationService.Data
 {
@@ -19,5 +20,7 @@ namespace RegistrationService.Data
         public string LastName { get; set; }
 
         public List<PatientAddress> PatientAddresses { get; set; }
+
+      
     }
 }

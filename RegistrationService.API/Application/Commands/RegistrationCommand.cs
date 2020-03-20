@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using MediatR;
 
-namespace RegistrationService.Data
+namespace RegistrationService.API.Commands
 {
-    public class RegistrationCommand
-    {
+    public class RegistrationCommand : IRequest<bool>
+    { 
         public DateTime BirthDate { get; private set; }
         public string Gender { get; private set; }
         public string FirstName { get; private set; }

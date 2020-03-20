@@ -1,18 +1,22 @@
-﻿using System;
+﻿using RegistrationService.Data;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
+using MediatR;
 using System.Threading.Tasks;
 
-namespace RegistrationService.Data
+namespace RegistrationService.API.Commands
 {
-    public class RegistrationCommandHandler
+    public class RegistrationCommandHandler : IRequestHandler<RegistrationCommand, bool>
     {
         private readonly RegistrationContext _registrationContext;
+        private readonly IMediator _mediator;
 
-        public RegistrationCommandHandler(RegistrationContext registrationContext)
+        public RegistrationCommandHandler(RegistrationContext registrationContext, IMediator mediator)
         {
             _registrationContext = registrationContext ?? throw new ArgumentNullException(nameof(registrationContext));
+            _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
 
         public async Task<bool> Handle(RegistrationCommand message, CancellationToken cancellationToken)

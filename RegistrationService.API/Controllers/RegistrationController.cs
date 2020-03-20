@@ -5,9 +5,12 @@ using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
+using RegistrationService.API.Commands;
 using RegistrationService.Data;
 using RegistrationService.Data.Queries;
+using MediatR;
 
 namespace RegistrationService.API.Controllers
 {
@@ -17,11 +20,15 @@ namespace RegistrationService.API.Controllers
     {
         private RegistrationContext _context;
         private IRegistrationQueries _registrationQueries;
+        private IMediator _mediatr;
+        private readonly ILogger<RegistrationController> _logger;
 
-        public RegistrationController(RegistrationContext context, IRegistrationQueries registrationQueries)
+        public RegistrationController(RegistrationContext context, IRegistrationQueries registrationQueries, IMediator mediatr, ILogger<RegistrationController> logger)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
             _registrationQueries = registrationQueries ?? throw new ArgumentNullException(nameof(registrationQueries));
+            _mediatr = mediatr ?? throw new ArgumentNullException(nameof(mediatr));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
         // GET: api/Registration
         [HttpGet]
@@ -73,10 +80,20 @@ namespace RegistrationService.API.Controllers
        [HttpPost]
         public async Task<ActionResult<bool>> Registration([FromBody] PatientDTO dto)
         {
-            var command = new RegistrationCommand(dto.BirthDate, dto.Gender, dto.FirstName, dto.MiddleName, dto.LastName);
-            var handler = new RegistrationCommandHandler(_context);
+            bool commandResult = false;
 
-            return await handler.Handle(command, new System.Threading.CancellationToken());
+            var command = new RegistrationCommand(dto.BirthDate, dto.Gender, dto.FirstName, dto.MiddleName, dto.LastName);
+            
+            _logger.LogInformation("-----Sending command: RegistrationCommand");
+
+            commandResult = await _mediatr.Send(command);
+
+            if (!commandResult)
+            {
+                return BadRequest();
+            }
+
+            return Ok();
 
 
         }

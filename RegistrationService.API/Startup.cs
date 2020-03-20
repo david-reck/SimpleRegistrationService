@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -33,6 +34,7 @@ namespace RegistrationService.API
                     .EnableSensitiveDataLogging()
                 );
             services.AddTransient<IRegistrationQueries>(s => new RegistrationQueries(Configuration.GetConnectionString("PatientConnex")));
+            services.AddMediatR(typeof(Startup));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
