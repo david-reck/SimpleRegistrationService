@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using RegistrationService.Data.Events;
+using RegistrationService.Data.Seedwork;
 
 namespace RegistrationService.Data
 {
@@ -11,7 +13,7 @@ namespace RegistrationService.Data
         {
             PatientAddresses = new List<PatientAddress>();
         }
-
+        
         public Int64 PatientId { get; set; }
         public DateTime BirthDate { get; set; }
         public string Gender { get; set; }
@@ -21,6 +23,10 @@ namespace RegistrationService.Data
 
         public List<PatientAddress> PatientAddresses { get; set; }
 
-      
+        public bool IsTransient()
+        {
+            return this.PatientId == default(Int32);
+        }
+
     }
 }

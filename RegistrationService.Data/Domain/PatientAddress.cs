@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using RegistrationService.Data.Seedwork;
 
 namespace RegistrationService.Data
 {
-	public class PatientAddress
+	public class PatientAddress : Entity
 	{
 		public Int64 PatientAddressId { get; set; }
 		public string StreetAddress { get; set; }
