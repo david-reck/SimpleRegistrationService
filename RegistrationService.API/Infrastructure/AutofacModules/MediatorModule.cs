@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using Autofac;
 using MediatR;
+using RegistrationService.API.Application.Behaviors;
 using RegistrationService.API.Commands;
 
 namespace RegistrationService.API.Infrastructure.AutofacModules
@@ -25,7 +26,7 @@ namespace RegistrationService.API.Infrastructure.AutofacModules
                 return t => { object o; return componentContext.TryResolve(t, out o) ? o : null; };
             });
 
-           
+            builder.RegisterGeneric(typeof(TransactionBehaviour<,>)).As(typeof(IPipelineBehavior<,>));
 
         }
     }

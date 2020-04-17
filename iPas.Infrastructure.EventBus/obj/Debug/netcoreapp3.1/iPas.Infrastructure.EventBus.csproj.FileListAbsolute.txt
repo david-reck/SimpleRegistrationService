@@ -1,0 +1,7 @@
+C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\iPas.Infrastructure.EventBus\obj\Debug\netcoreapp3.1\iPas.Infrastructure.EventBus.AssemblyInfoInputs.cache
+C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\iPas.Infrastructure.EventBus\obj\Debug\netcoreapp3.1\iPas.Infrastructure.EventBus.AssemblyInfo.cs
+C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\iPas.Infrastructure.EventBus\bin\Debug\netcoreapp3.1\iPas.Infrastructure.EventBus.deps.json
+C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\iPas.Infrastructure.EventBus\bin\Debug\netcoreapp3.1\iPas.Infrastructure.EventBus.dll
+C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\iPas.Infrastructure.EventBus\bin\Debug\netcoreapp3.1\iPas.Infrastructure.EventBus.pdb
+C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\iPas.Infrastructure.EventBus\obj\Debug\netcoreapp3.1\iPas.Infrastructure.EventBus.dll
+C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\iPas.Infrastructure.EventBus\obj\Debug\netcoreapp3.1\iPas.Infrastructure.EventBus.pdb

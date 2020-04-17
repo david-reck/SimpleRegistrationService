@@ -13,6 +13,15 @@ using Microsoft.AspNetCore.Http;
 using RegistrationService.API.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using RegistrationService.API.Infrastructure.Filters;
+using iPas.Infrastructure.EventBus;
+using iPas.Infrastructure.EventBus.Abstractions;
+using iPas.Infrastructure.EventBusServiceBus;
+using iPas.Infrastructure.IntegrationEventLogEF;
+using iPas.Infrastructure.IntegrationEventLogEF.Services;
+using RegistrationService.API.IntegrationEvents;
+using System.Data.Common;
+using Microsoft.Azure.ServiceBus;
+using System.Reflection;
 
 namespace RegistrationService.API
 {
@@ -29,7 +38,9 @@ namespace RegistrationService.API
         {
             services
                 .AddCustomMvc()
-                .AddCustomDbContext(Configuration);
+                .AddCustomDbContext(Configuration)
+                .AddCustomIntegrations(Configuration)
+                .AddEventBus(Configuration);
             //configure autofac
 
             var container = new ContainerBuilder();
@@ -111,13 +122,66 @@ namespace RegistrationService.API
                    },
                        ServiceLifetime.Scoped  //Showing explicitly that the DbContext is shared across the HTTP request scope (graph of objects started in the HTTP request)
                    );
+
+            services.AddDbContext<IntegrationEventLogContext>(options =>
+            {
+                options.UseSqlServer(configuration.GetConnectionString("PatientConnex"),
+                                     sqlServerOptionsAction: sqlOptions =>
+                                     {
+                                         sqlOptions.MigrationsAssembly(typeof(Startup).GetTypeInfo().Assembly.GetName().Name);
+                                         sqlOptions.EnableRetryOnFailure(maxRetryCount: 15, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
+                                     });
+            });
+
+            return services;
+        }
+
+
+        public static IServiceCollection AddCustomIntegrations(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            //services.AddTransient<IIdentityService, IdentityService>();
+            services.AddTransient<Func<DbConnection, IIntegrationEventLogService>>(
+                sp => (DbConnection c) => new IntegrationEventLogService(c));
+
+            services.AddTransient<IRegistrationIntegrationEventService, RegistrationIntegrationEventService>();
+
+                services.AddSingleton<IServiceBusPersisterConnection>(sp =>
+                {
+                    var logger = sp.GetRequiredService<ILogger<DefaultServiceBusPersisterConnection>>();
+
+                    var serviceBusConnectionString = configuration["EventBusConnection"];
+                    var serviceBusConnection = new ServiceBusConnectionStringBuilder(serviceBusConnectionString);
+
+                    return new DefaultServiceBusPersisterConnection(serviceBusConnection, logger);
+                });           
+
+            return services;
+        }
+
+        public static IServiceCollection AddEventBus(this IServiceCollection services, IConfiguration configuration)
+        {
+            var subscriptionClientName = configuration["SubscriptionClientName"];
+
+                services.AddSingleton<IEventBus, EventBusServiceBus>(sp =>
+                {
+                    var serviceBusPersisterConnection = sp.GetRequiredService<IServiceBusPersisterConnection>();
+                    var iLifetimeScope = sp.GetRequiredService<ILifetimeScope>();
+                    var logger = sp.GetRequiredService<ILogger<EventBusServiceBus>>();
+                    var eventBusSubcriptionsManager = sp.GetRequiredService<IEventBusSubscriptionsManager>();
+
+                    return new EventBusServiceBus(serviceBusPersisterConnection, logger,
+                        eventBusSubcriptionsManager, subscriptionClientName, iLifetimeScope);
+                });
+
+
+            services.AddSingleton<IEventBusSubscriptionsManager, InMemoryEventBusSubscriptionsManager>();
+
             return services;
         }
 
 
 
-          
-        
 
         public static IServiceCollection AddCustomConfiguration(this IServiceCollection services, IConfiguration configuration)
         {

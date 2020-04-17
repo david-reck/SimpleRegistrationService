@@ -1,0 +1,8 @@
+C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\RegistrationService.Data\bin\Release\netstandard2.0\RegistrationService.Data.deps.json
+C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\RegistrationService.Data\bin\Release\netstandard2.0\RegistrationService.Data.dll
+C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\RegistrationService.Data\bin\Release\netstandard2.0\RegistrationService.Data.pdb
+C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\RegistrationService.Data\obj\Release\netstandard2.0\RegistrationService.Data.csprojAssemblyReference.cache
+C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\RegistrationService.Data\obj\Release\netstandard2.0\RegistrationService.Data.AssemblyInfoInputs.cache
+C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\RegistrationService.Data\obj\Release\netstandard2.0\RegistrationService.Data.AssemblyInfo.cs
+C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\RegistrationService.Data\obj\Release\netstandard2.0\RegistrationService.Data.dll
+C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\RegistrationService.Data\obj\Release\netstandard2.0\RegistrationService.Data.pdb

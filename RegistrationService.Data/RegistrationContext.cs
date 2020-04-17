@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using System;
+using System.Data;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -21,6 +22,15 @@ namespace RegistrationService.Data
         }
 
         public IDbContextTransaction GetCurrentTransaction() => _currentTransaction;
+
+        public async Task<IDbContextTransaction> BeginTransactionAsync()
+        {
+            if (_currentTransaction != null) return null;
+
+            _currentTransaction = await Database.BeginTransactionAsync(IsolationLevel.ReadCommitted);
+
+            return _currentTransaction;
+        }
 
         public bool HasActiveTransaction => _currentTransaction != null;
 
@@ -112,6 +122,7 @@ namespace RegistrationService.Data
 
         public async Task<bool> SaveEntitiesAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
+            OnBeforeSaving();
             var result = await base.SaveChangesAsync(cancellationToken);
 
             return true;

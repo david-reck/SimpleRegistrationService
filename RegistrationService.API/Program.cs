@@ -74,8 +74,7 @@ namespace RegistrationService.API
             .Enrich.WithProperty("ApplicationContext", AppName)
             .Enrich.FromLogContext()
             .WriteTo.Console()
-            .WriteTo.Seq(string.IsNullOrWhiteSpace(seqServerUrl) ? "http://seq" : seqServerUrl)
-            .WriteTo.Http(string.IsNullOrWhiteSpace(logstashUrl) ? "http://logstash:8080" : logstashUrl)
+            .WriteTo.File("log.txt", rollingInterval: RollingInterval.Day)
             .ReadFrom.Configuration(configuration)
             .CreateLogger();
     }
