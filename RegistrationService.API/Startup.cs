@@ -22,6 +22,7 @@ using RegistrationService.API.IntegrationEvents;
 using System.Data.Common;
 using Microsoft.Azure.ServiceBus;
 using System.Reflection;
+using RegistrationService.API.Grpc;
 
 namespace RegistrationService.API
 {
@@ -37,6 +38,7 @@ namespace RegistrationService.API
         public virtual IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services
+                .AddGrpc().Services
                 .AddCustomMvc()
                 .AddCustomDbContext(Configuration)
                 .AddCustomIntegrations(Configuration)
@@ -70,7 +72,14 @@ namespace RegistrationService.API
             {
                 endpoints.MapDefaultControllerRoute();
                 endpoints.MapControllers();
-                
+
+                endpoints.MapGrpcService<RegistrationService.API.Grpc.RegistrationService>();
+
+                endpoints.MapGet("/", async context =>
+                {
+                    await context.Response.WriteAsync("Communication with gRPC endpoints must be made through a gRPC client.");
+                });
+
             });
             
         }

@@ -12,6 +12,7 @@ namespace RegistrationService.Data
         public Patient()
         {
             PatientAddresses = new List<PatientAddress>();
+            PatientAccounts = new List<PatientAccount>();
         }
         
         public Int64 PatientId { get; set; }
@@ -20,8 +21,14 @@ namespace RegistrationService.Data
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }
+        public int ClientId { get; set; }
+        public Int64 FacilityId { get; set; }
+        public string MedicalRecordNumber { get; set; }
+
 
         public List<PatientAddress> PatientAddresses { get; set; }
+
+       public List<PatientAccount> PatientAccounts { get; set; }
 
         public bool IsTransient()
         {

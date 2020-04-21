@@ -13,6 +13,8 @@ namespace RegistrationService.Data
         public DbSet<Patient> Patient { get; set; }
         public DbSet<PatientAddress> PatientAddress { get; set; }
 
+        public DbSet<PatientAccount> PatientAccount { get; set; }
+
         private IDbContextTransaction _currentTransaction;
 
         public RegistrationContext(DbContextOptions<RegistrationContext> options)

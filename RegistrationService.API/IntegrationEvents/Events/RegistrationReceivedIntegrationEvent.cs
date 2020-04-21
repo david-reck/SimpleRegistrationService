@@ -7,9 +7,9 @@ namespace RegistrationService.API.IntegrationEvents.Events
     {
         public int ClientId { get; set; }
         public int FacilityId { get; set; }
-        public Int64 EpisodeOfCareId { get; set; }
+        public string AccountNumber { get; set; }
         public string MedicalRecordNumber { get; set; }
-        public Int64 TransactionId { get; set; }
+        public string DocumentId { get; set; }
 
         //******************
         //TO BE REMOVED AFTER ADDING GRPC INTEGRATION
@@ -19,14 +19,14 @@ namespace RegistrationService.API.IntegrationEvents.Events
         public string MiddleName { get; set; }
         public string LastName { get; set; }
 
-        public RegistrationReceivedIntegrationEvent(int clientId, int facilityId, Int64 episodeOfCareId, string medicalRecordNumber, Int64 transactionId, 
+        public RegistrationReceivedIntegrationEvent(int clientId, int facilityId, string accountNumber, string medicalRecordNumber, string documentId, 
                 DateTime birthDate, string gender, string firstName, string middleName, string lastName)
         {
             ClientId = clientId;
             FacilityId = facilityId;
-            EpisodeOfCareId = episodeOfCareId;
+            AccountNumber = accountNumber;
             MedicalRecordNumber = medicalRecordNumber;
-            TransactionId = transactionId;
+            DocumentId = documentId;
             BirthDate = birthDate;
             Gender = gender;
             FirstName = firstName;

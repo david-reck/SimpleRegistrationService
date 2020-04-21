@@ -11,6 +11,7 @@ using RegistrationService.API.Commands;
 using RegistrationService.Data;
 using RegistrationService.Data.Queries;
 using MediatR;
+using RegistrationService.API.Application.Commands;
 
 namespace RegistrationService.API.Controllers
 {
@@ -98,6 +99,26 @@ namespace RegistrationService.API.Controllers
 
         }
 
+        [Route("RegistrationWithMessage")]
+        [HttpPost]
+        public async Task<ActionResult<bool>> RegistrationExtended([FromBody] RegistrationDTO dto)
+        {
+            bool commandResult = false;
+
+            var command = new RegistrationWithMessageCommand(dto.ClientId, dto.FacilityCode, dto.MedicalRecordNumber, dto.AccountNumber, dto.ADTMessage);
+            _logger.LogInformation("-----Sending command: RegistrationCommand");
+
+            commandResult = await _mediatr.Send(command);
+
+            if (!commandResult)
+            {
+                return BadRequest();
+            }
+
+            return Ok();
+
+
+        }
 
         // PUT: api/Registration/5
         [HttpPut("{id}")]

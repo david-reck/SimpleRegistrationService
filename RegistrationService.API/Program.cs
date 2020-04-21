@@ -47,13 +47,14 @@ namespace RegistrationService.API
             .CaptureStartupErrors(false)
             .ConfigureKestrel(options =>
             {
+                IPAddress address = IPAddress.Parse("127.0.0.1");
                 var ports = GetDefinedPorts(configuration);
                 options.Listen(IPAddress.Any, ports.httpPort, listenOptions =>
                 {
                     listenOptions.Protocols = HttpProtocols.Http1AndHttp2;
                 });
 
-                options.Listen(IPAddress.Any, ports.grpcPort, listenOptions =>
+                options.Listen(address /*IPAddress.Any*/, ports.grpcPort, listenOptions =>
                 {
                     listenOptions.Protocols = HttpProtocols.Http2;
                 });
@@ -91,7 +92,7 @@ namespace RegistrationService.API
     }
     private static (int httpPort, int grpcPort) GetDefinedPorts(IConfiguration config)
     {
-        var grpcPort = config.GetValue("GRPC_PORT", 5001);
+        var grpcPort = config.GetValue("GRPC_PORT", 5021);
         var port = config.GetValue("PORT", 80);
         return (port, grpcPort);
     }

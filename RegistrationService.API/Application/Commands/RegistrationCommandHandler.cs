@@ -37,7 +37,7 @@ namespace RegistrationService.API.Commands
             patient.Gender = message.Gender;
             patient.LastName = message.LastName;
 
-            var registrationReceivedEvent = new RegistrationReceivedIntegrationEvent(1, 1, 1, "1233456789", 1, message.BirthDate, message.Gender, message.FirstName, message.MiddleName, message.LastName);
+            var registrationReceivedEvent = new RegistrationReceivedIntegrationEvent(1, 1, "987654321", "1233456789", "abcdefg", message.BirthDate, message.Gender, message.FirstName, message.MiddleName, message.LastName);
             await _registrationIntegrationEventService.AddAndSaveEventAsync(registrationReceivedEvent);
 
             _registrationContext.Add(patient);
