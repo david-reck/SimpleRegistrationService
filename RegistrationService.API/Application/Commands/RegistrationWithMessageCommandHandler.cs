@@ -12,6 +12,7 @@ using RegistrationService.API.IntegrationEvents;
 using System.Xml;
 using System.Text.RegularExpressions;
 using Microsoft.Azure.Cosmos;
+using RegistrationService.API.DTORaw;
 
 namespace RegistrationService.API.Application.Commands
 {
@@ -30,6 +31,11 @@ namespace RegistrationService.API.Application.Commands
 
         public async Task<bool> Handle(RegistrationWithMessageCommand message, CancellationToken cancellationToken)
         {
+            var xmldoc = new XmlDocument();
+            xmldoc.LoadXml(message.ADTMessage);
+
+            var jsonString = JsonConvert.SerializeXmlNode(xmldoc);
+            Hl7Adt hl7Adt = JsonConvert.DeserializeObject<Hl7Adt>(jsonString);
 
             var patientAccounts = new List<PatientAccount>();
             patientAccounts.Add(new PatientAccount { AccountNumber = message.AccountNumber });
@@ -38,15 +44,26 @@ namespace RegistrationService.API.Application.Commands
             patient.PatientAccounts = patientAccounts;
             patient.MedicalRecordNumber = message.MedicalRecordNumber;
             patient.ClientId = message.ClientId;
+            patient.FirstName = hl7Adt.Hl7Message.Pid.Pid5.Pid51;
+            patient.LastName = hl7Adt.Hl7Message.Pid.Pid5.Pid52;
+            patient.Gender = hl7Adt.Hl7Message.Pid.Pid8.Pid81;
+
+            string[] format = { "yyyyMMdd" };
+            DateTime date;
+
+            DateTime.TryParseExact(hl7Adt.Hl7Message.Pid.Pid7.Pid71,
+                                       format,
+                                       System.Globalization.CultureInfo.InvariantCulture,
+                                       System.Globalization.DateTimeStyles.None,
+                                       out date);
+            patient.BirthDate = date;
+
             //TODO:  Look Up Facility ID from Faclity Code and ClientId -- Hard Code for now
             patient.FacilityId = 1;
 
             _registrationContext.Add(patient);
             
-            var xmldoc = new XmlDocument();
-            xmldoc.LoadXml(message.ADTMessage);
-
-            var jsonString = JsonConvert.SerializeXmlNode(xmldoc);
+            
 
             RegistrationDTO registrationDTO = new RegistrationDTO();
             registrationDTO.ADTMessage = jsonString;
@@ -66,7 +83,7 @@ namespace RegistrationService.API.Application.Commands
 
 
             var registrationReceivedEvent = new RegistrationReceivedIntegrationEvent(message.ClientId,  1, message.AccountNumber, message.MedicalRecordNumber ,registrationDTO.id,
-                    new DateTime(2000, 1, 1), "F", "TEST FNAME", "TEST MIDDLENAME", "TEST LASTNAME");
+                    patient.BirthDate, patient.Gender, patient.LastName, "", patient.LastName);
             await _registrationIntegrationEventService.AddAndSaveEventAsync(registrationReceivedEvent);
 
 
