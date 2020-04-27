@@ -90,6 +90,6 @@ namespace RegistrationService.API.Application.Commands
 
 
             return await _registrationContext.SaveEntitiesAsync(cancellationToken);
-        }
+         }
     }
 }
