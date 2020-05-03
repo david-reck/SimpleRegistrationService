@@ -2,7 +2,8 @@
 using Autofac;
 using MediatR;
 using RegistrationService.API.Application.Behaviors;
-using RegistrationService.API.Commands;
+using RegistrationService.API.Application.Commands;
+using RegistrationService.API.Application.DomainEventHandlers.PatientTransactionReceived;
 
 namespace RegistrationService.API.Infrastructure.AutofacModules
 {
@@ -13,11 +14,12 @@ namespace RegistrationService.API.Infrastructure.AutofacModules
             builder.RegisterAssemblyTypes(typeof(IMediator).GetTypeInfo().Assembly)
                 .AsImplementedInterfaces();
 
-            // Register all the Command classes (they implement IRequestHandler) in assembly holding the Commands
-            builder.RegisterAssemblyTypes(typeof(RegistrationCommand).GetTypeInfo().Assembly)
+            
+            builder.RegisterAssemblyTypes(typeof(RegistrationWithMessageCommand).GetTypeInfo().Assembly)
                 .AsClosedTypesOf(typeof(IRequestHandler<,>));
 
- 
+            builder.RegisterAssemblyTypes(typeof(AddDocumentWhenPatientTransactionReceivedEventHandler).GetTypeInfo().Assembly)
+                .AsClosedTypesOf(typeof(INotificationHandler<>));
 
 
             builder.Register<ServiceFactory>(context =>

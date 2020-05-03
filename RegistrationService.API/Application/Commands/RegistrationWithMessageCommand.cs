@@ -5,22 +5,22 @@ namespace RegistrationService.API.Application.Commands
 {
     public class RegistrationWithMessageCommand : IRequest<bool>
     {
-        public int ClientId { get; private set; }
+        public Int64 ClientId { get; private set; }
 
         public string FacilityCode { get; private set; }
 
         public string MedicalRecordNumber { get; private set; }
 
-        public string AccountNumber { get; private set; }
+        public string PatientNumber { get; private set; }
 
         public string ADTMessage { get; private set; }
 
-        public RegistrationWithMessageCommand(int clientId, string facilityCode, string medicalRecordNumber, string accountNumber, string message)
+        public RegistrationWithMessageCommand(Int64 clientId, string facilityCode, string medicalRecordNumber, string patientNumber, string message)
         {
             ClientId = clientId;
             FacilityCode = facilityCode;
             MedicalRecordNumber = medicalRecordNumber;
-            AccountNumber = accountNumber;
+            PatientNumber = patientNumber;
             ADTMessage = message;
         }
     }

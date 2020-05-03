@@ -2,6 +2,7 @@
 using Microsoft.Azure.Cosmos;
 using Microsoft.Extensions.Logging;
 using RegistrationService.API.IntegrationEvents;
+using RegistrationService.Data.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;

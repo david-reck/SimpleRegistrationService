@@ -13,6 +13,11 @@ using System.Xml;
 using System.Text.RegularExpressions;
 using Microsoft.Azure.Cosmos;
 using RegistrationService.API.DTORaw;
+using RegistrationService.Data.Domain;
+using RegistrationService.API.Grpc;
+using System.Linq;
+using RegistrationService.Data.Repositories;
+using RegistrationService.Data.Events;
 
 namespace RegistrationService.API.Application.Commands
 {
@@ -21,75 +26,67 @@ namespace RegistrationService.API.Application.Commands
         private readonly RegistrationContext _registrationContext;
         private readonly IMediator _mediator;
         private readonly IRegistrationIntegrationEventService _registrationIntegrationEventService;
+        private IClientGRPCClientService _grpcClientService;
+        private readonly IRegistrationRepository _registrationRepository;
 
-        public RegistrationWithMessageCommandHandler(RegistrationContext registrationContext, IMediator mediator, IRegistrationIntegrationEventService registrationIntegrationEventService)
+        public RegistrationWithMessageCommandHandler(RegistrationContext registrationContext,
+            IMediator mediator, 
+            IRegistrationIntegrationEventService registrationIntegrationEventService,
+            IClientGRPCClientService clientService, IRegistrationRepository registrationRepository)
         {
             _registrationContext = registrationContext ?? throw new ArgumentNullException(nameof(registrationContext));
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
             _registrationIntegrationEventService = registrationIntegrationEventService ?? throw new ArgumentNullException(nameof(registrationIntegrationEventService));
+            _grpcClientService = clientService ?? throw new ArgumentNullException(nameof(clientService));
+            _registrationRepository = registrationRepository ?? throw new ArgumentNullException(nameof(registrationRepository));
         }
 
         public async Task<bool> Handle(RegistrationWithMessageCommand message, CancellationToken cancellationToken)
         {
+            bool saved = false;
+            Guid id = Guid.NewGuid();
+            Int64 facilityId = await _grpcClientService.ClientFacilitySubscribesToModule(message.ClientId, message.FacilityCode);
+
+            var patientTransaction = new List<PatientTransaction>();
+            patientTransaction.Add(new PatientTransaction { DocumentId = id });
+
+            var patient = _registrationRepository.FindPatientAndPatientVisit(message.MedicalRecordNumber, message.PatientNumber);
+            if(patient == null)
+            {
+                patient = new Patient { ClientId = message.ClientId, FacilityId = facilityId, MedicalRecordNumber = message.MedicalRecordNumber };
+            }            
+            if (patient.PatientVisits.Count == 0)
+            {
+                var patientVist = new List<PatientVisit>();
+                patientVist.Add(new PatientVisit { PatientNumber = message.PatientNumber, PatientTransactions = patientTransaction});
+                patient.PatientVisits = patientVist;
+            }
+            else
+            {
+                patient.PatientVisits[0].PatientTransactions = patientTransaction;
+            }
+
+            if (patient.PatientId == 0)
+            { _registrationContext.Add(patient); }
+            else
+            { _registrationContext.Update(patient); }
+
             var xmldoc = new XmlDocument();
             xmldoc.LoadXml(message.ADTMessage);
 
             var jsonString = JsonConvert.SerializeXmlNode(xmldoc);
             Hl7Adt hl7Adt = JsonConvert.DeserializeObject<Hl7Adt>(jsonString);
 
-            var patientAccounts = new List<PatientAccount>();
-            patientAccounts.Add(new PatientAccount { AccountNumber = message.AccountNumber });
-
-            var patient = new Patient();
-            patient.PatientAccounts = patientAccounts;
-            patient.MedicalRecordNumber = message.MedicalRecordNumber;
-            patient.ClientId = message.ClientId;
-            patient.FirstName = hl7Adt.Hl7Message.Pid.Pid5.Pid51;
-            patient.LastName = hl7Adt.Hl7Message.Pid.Pid5.Pid52;
-            patient.Gender = hl7Adt.Hl7Message.Pid.Pid8.Pid81;
-
-            string[] format = { "yyyyMMdd" };
-            DateTime date;
-
-            DateTime.TryParseExact(hl7Adt.Hl7Message.Pid.Pid7.Pid71,
-                                       format,
-                                       System.Globalization.CultureInfo.InvariantCulture,
-                                       System.Globalization.DateTimeStyles.None,
-                                       out date);
-            patient.BirthDate = date;
-
-            //TODO:  Look Up Facility ID from Faclity Code and ClientId -- Hard Code for now
-            patient.FacilityId = 1;
-
-            _registrationContext.Add(patient);
-            
-            
-
-            RegistrationDTO registrationDTO = new RegistrationDTO();
-            registrationDTO.ADTMessage = jsonString;
-            registrationDTO.AccountNumber = message.AccountNumber;
-            registrationDTO.ClientId = message.ClientId;
-            registrationDTO.FacilityCode = message.FacilityCode;
-           //*****Cosmos Activity
-            string EndpointUri = "https://pelitascosmosadmin.documents.azure.com:443/";
-            // The primary key for the Azure Cosmos account.
-            string PrimaryKey = "RUMdNn9Lf5QzyLOjrjn1CLPXapLmdL3sfwy8RrNje2wJVF4F5D1h9nhpwTVzvmX87QyBqWSILBCOQ6WxkoROzA==";
-
-            CosmosClient cosmosClient = new CosmosClient(EndpointUri, PrimaryKey, new CosmosClientOptions() { ApplicationName = "iPas.Registration" });
-            Database database  = await cosmosClient.CreateDatabaseIfNotExistsAsync("ClientFeed");
-            Container container = await database.CreateContainerIfNotExistsAsync("ADT", "/ClientId", 400);
-
-           ItemResponse<RegistrationDTO> item = await container.CreateItemAsync<RegistrationDTO>(registrationDTO, new PartitionKey(message.ClientId));
-
-
-            var registrationReceivedEvent = new RegistrationReceivedIntegrationEvent(message.ClientId,  1, message.AccountNumber, message.MedicalRecordNumber ,registrationDTO.id,
-                    patient.BirthDate, patient.Gender, patient.LastName, "", patient.LastName);
+            var registrationReceivedEvent = new RegistrationReceivedIntegrationEvent(patient.ClientId, patient.FacilityId, patient.PatientId,
+                patient.PatientVisits[0].PatientVisitId, patient.PatientVisits[0].PatientTransactions[0].DocumentId.ToString());
             await _registrationIntegrationEventService.AddAndSaveEventAsync(registrationReceivedEvent);
 
 
-
-
-            return await _registrationContext.SaveEntitiesAsync(cancellationToken);
-         }
+            saved =  await _registrationContext.SaveEntitiesAsync(cancellationToken);
+            await _mediator.Publish(new PatientTransactionReceivedEvent(patient, jsonString));
+            
+            
+            return saved;
+        }
     }
 }

@@ -23,6 +23,7 @@ using System.Data.Common;
 using Microsoft.Azure.ServiceBus;
 using System.Reflection;
 using RegistrationService.API.Grpc;
+using RegistrationService.Data.Repositories;
 
 namespace RegistrationService.API
 {
@@ -42,14 +43,17 @@ namespace RegistrationService.API
                 .AddCustomMvc()
                 .AddCustomDbContext(Configuration)
                 .AddCustomIntegrations(Configuration)
-                .AddEventBus(Configuration);
+                .AddEventBus(Configuration)
+                .AddDocumentRepository(Configuration);
             //configure autofac
 
             var container = new ContainerBuilder();
             container.Populate(services);
 
             container.RegisterModule(new MediatorModule());
-            container.RegisterModule(new ApplicationModule(Configuration.GetConnectionString("PatientConnex")));
+            container.RegisterModule(new ApplicationModule(Configuration.GetConnectionString("PatientConnex"), 
+                Configuration.GetValue<string>("CliendServiceEndPoint:ClientServiceURL"),
+                Configuration.GetValue<string>("Module:Name")));
 
             return new AutofacServiceProvider(container.Build());
         }
@@ -189,7 +193,23 @@ namespace RegistrationService.API
             return services;
         }
 
+        public static IServiceCollection AddDocumentRepository(this IServiceCollection services, IConfiguration configuration)
+        {
+            
+            services.AddSingleton<IDocumentRepository, DocumentRepository>(dR =>
+            {
 
+                var logger = dR.GetRequiredService<ILogger<DocumentRepository>>();
+                return new DocumentRepository(configuration.GetValue<string>("DocumentDatabase:EndpointUri"),
+                    configuration.GetValue<string>("DocumentDatabase:PrimaryKey"),
+                    configuration.GetValue<string>("DocumentDatabase:ApplicationName"),
+                    configuration.GetValue<string>("DocumentDatabase:DatabaseName"),
+                    configuration.GetValue<string>("DocumentDatabase:ContainerName"),
+                    configuration.GetValue<string>("DocumentDatabase:PartitionKey"), logger);
+
+            });
+            return services;
+        }
 
 
         public static IServiceCollection AddCustomConfiguration(this IServiceCollection services, IConfiguration configuration)

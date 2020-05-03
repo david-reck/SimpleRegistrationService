@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
+using RegistrationService.Data.Domain;
 using System;
 using System.Data;
 using System.Linq;
@@ -11,9 +12,9 @@ namespace RegistrationService.Data
     public class RegistrationContext : DbContext, IUnitOfWork
     {
         public DbSet<Patient> Patient { get; set; }
-        public DbSet<PatientAddress> PatientAddress { get; set; }
+        public DbSet<PatientVisit> PatientVisit { get; set; }
 
-        public DbSet<PatientAccount> PatientAccount { get; set; }
+        public DbSet<PatientTransaction> PatientTransaction { get; set; }
 
         private IDbContextTransaction _currentTransaction;
 
@@ -44,7 +45,9 @@ namespace RegistrationService.Data
             foreach (var entityType in modelBuilder.Model.GetEntityTypes())
             {
                 modelBuilder.Entity(entityType.Name).Property<DateTime>("CreateDate");
+                modelBuilder.Entity(entityType.Name).Property<string>("CreatedBy");
                 modelBuilder.Entity(entityType.Name).Property<DateTime>("LastUpdateDate");
+                modelBuilder.Entity(entityType.Name).Property<string>("LastUpdateBy");
             }
         }
 
@@ -71,10 +74,11 @@ namespace RegistrationService.Data
                 .Where(e => e.State == EntityState.Added || e.State == EntityState.Modified))
             {
                 entry.Property("LastUpdateDate").CurrentValue = timestamp;
-
+                entry.Property("LastUpdateBy").CurrentValue = "TODO: ADD USER";
                 if (entry.State == EntityState.Added)
                 {
                     entry.Property("CreateDate").CurrentValue = timestamp;
+                    entry.Property("CreatedBy").CurrentValue = "TODO: ADD USER";
                 }
             }
 

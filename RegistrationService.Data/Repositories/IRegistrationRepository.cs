@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RegistrationService.Data.Domain;
+using System;
 using System.Threading.Tasks;
 
 namespace RegistrationService.Data.Repositories
@@ -10,5 +11,7 @@ namespace RegistrationService.Data.Repositories
         Patient Update(Patient patient);
 
         Task<Patient> FindByIdAsync(Int64 patientId);
+
+        Patient FindPatientAndPatientVisit(string medicalRecordNumber, string PatientNumber);
     }
 }

@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
-using RegistrationService.API.Commands;
 using RegistrationService.Data;
 using RegistrationService.Data.Queries;
 using MediatR;
 using RegistrationService.API.Application.Commands;
+using RegistrationService.Data.Domain;
+using RegistrationService.Data.DTOs;
 
 namespace RegistrationService.API.Controllers
 {
@@ -77,35 +76,13 @@ namespace RegistrationService.API.Controllers
             return patient;
         }
 
-        //POST: api/Registration
-       [HttpPost]
-        public async Task<ActionResult<bool>> Registration([FromBody] PatientDTO dto)
-        {
-            bool commandResult = false;
-
-            var command = new RegistrationCommand(dto.BirthDate, dto.Gender, dto.FirstName, dto.MiddleName, dto.LastName);
-            
-            _logger.LogInformation("-----Sending command: RegistrationCommand");
-
-            commandResult = await _mediatr.Send(command);
-
-            if (!commandResult)
-            {
-                return BadRequest();
-            }
-
-            return Ok();
-
-
-        }
-
         [Route("RegistrationWithMessage")]
         [HttpPost]
         public async Task<ActionResult<bool>> RegistrationExtended([FromBody] RegistrationDTO dto)
         {
             bool commandResult = false;
 
-            var command = new RegistrationWithMessageCommand(dto.ClientId, dto.FacilityCode, dto.MedicalRecordNumber, dto.AccountNumber, dto.ADTMessage);
+            var command = new RegistrationWithMessageCommand(dto.ClientId, dto.FacilityCode, dto.MedicalRecordNumber, dto.PatientNumber, dto.ADTMessage);
             _logger.LogInformation("-----Sending command: RegistrationCommand");
 
             commandResult = await _mediatr.Send(command);

@@ -3,7 +3,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using RegistrationService.Data;
-
+using RegistrationService.Data.Domain;
 
 namespace RegistrationService.Data.Repositories
 {
@@ -52,6 +52,21 @@ namespace RegistrationService.Data.Repositories
                 .Where(p => p.PatientId == patientId)
                 .SingleOrDefaultAsync();
 
+            return patient;
+        }
+
+        public Patient FindPatientAndPatientVisit(string medicalRecordNumber, string patientNumber)
+        {
+            var patient = _context.Patient.Where(p => p.MedicalRecordNumber == medicalRecordNumber).FirstOrDefault();
+            if (patient != null)
+            {
+                var patientVisit = _context.PatientVisit.Where(pv => pv.PatientNumber == patientNumber).FirstOrDefault();
+                if (patientVisit != null)
+                {
+                    patient.PatientVisits.Add(patientVisit);
+                }
+
+            }
             return patient;
         }
     }
