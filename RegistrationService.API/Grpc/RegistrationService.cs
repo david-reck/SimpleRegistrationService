@@ -39,5 +39,22 @@ namespace RegistrationService.API.Grpc
             return null;
         }
 
+        public override async Task<SearchAPIAdtMessageResponse> SearchAPIFindAdtMessageById(SearchAPIAdtMessageRequest request, ServerCallContext context)
+        {
+
+            ItemResponse<RegistrationDTO> registration = await _container.ReadItemAsync<RegistrationDTO>(request.Id, new PartitionKey(request.ClientId));
+
+            if (registration != null)
+            {
+                Console.WriteLine(registration.Resource.ADTMessage);
+                return new SearchAPIAdtMessageResponse { AdtMessage = registration.Resource.ADTMessage };
+            }
+
+
+
+            context.Status = new Status(StatusCode.NotFound, $"Document with id {request.Id} does not exist");
+            return null;
+        }
+
     }
-}
+        }

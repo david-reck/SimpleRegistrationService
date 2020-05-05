@@ -14,6 +14,8 @@ namespace RegistrationService.API.Grpc {
 
     static readonly grpc::Marshaller<global::RegistrationService.API.Grpc.AdtMessageRequest> __Marshaller_RegistrationApi_AdtMessageRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::RegistrationService.API.Grpc.AdtMessageRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::RegistrationService.API.Grpc.AdtMessageResponse> __Marshaller_RegistrationApi_AdtMessageResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::RegistrationService.API.Grpc.AdtMessageResponse.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::RegistrationService.API.Grpc.SearchAPIAdtMessageRequest> __Marshaller_RegistrationApi_SearchAPIAdtMessageRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::RegistrationService.API.Grpc.SearchAPIAdtMessageRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::RegistrationService.API.Grpc.SearchAPIAdtMessageResponse> __Marshaller_RegistrationApi_SearchAPIAdtMessageResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::RegistrationService.API.Grpc.SearchAPIAdtMessageResponse.Parser.ParseFrom);
 
     static readonly grpc::Method<global::RegistrationService.API.Grpc.AdtMessageRequest, global::RegistrationService.API.Grpc.AdtMessageResponse> __Method_FindAdtMessageById = new grpc::Method<global::RegistrationService.API.Grpc.AdtMessageRequest, global::RegistrationService.API.Grpc.AdtMessageResponse>(
         grpc::MethodType.Unary,
@@ -21,6 +23,13 @@ namespace RegistrationService.API.Grpc {
         "FindAdtMessageById",
         __Marshaller_RegistrationApi_AdtMessageRequest,
         __Marshaller_RegistrationApi_AdtMessageResponse);
+
+    static readonly grpc::Method<global::RegistrationService.API.Grpc.SearchAPIAdtMessageRequest, global::RegistrationService.API.Grpc.SearchAPIAdtMessageResponse> __Method_SearchAPIFindAdtMessageById = new grpc::Method<global::RegistrationService.API.Grpc.SearchAPIAdtMessageRequest, global::RegistrationService.API.Grpc.SearchAPIAdtMessageResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "SearchAPIFindAdtMessageById",
+        __Marshaller_RegistrationApi_SearchAPIAdtMessageRequest,
+        __Marshaller_RegistrationApi_SearchAPIAdtMessageResponse);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -37,6 +46,11 @@ namespace RegistrationService.API.Grpc {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
+      public virtual global::System.Threading.Tasks.Task<global::RegistrationService.API.Grpc.SearchAPIAdtMessageResponse> SearchAPIFindAdtMessageById(global::RegistrationService.API.Grpc.SearchAPIAdtMessageRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
     }
 
     /// <summary>Creates service definition that can be registered with a server</summary>
@@ -44,7 +58,8 @@ namespace RegistrationService.API.Grpc {
     public static grpc::ServerServiceDefinition BindService(RegistrationApiRetrievalBase serviceImpl)
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
-          .AddMethod(__Method_FindAdtMessageById, serviceImpl.FindAdtMessageById).Build();
+          .AddMethod(__Method_FindAdtMessageById, serviceImpl.FindAdtMessageById)
+          .AddMethod(__Method_SearchAPIFindAdtMessageById, serviceImpl.SearchAPIFindAdtMessageById).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
@@ -54,6 +69,7 @@ namespace RegistrationService.API.Grpc {
     public static void BindService(grpc::ServiceBinderBase serviceBinder, RegistrationApiRetrievalBase serviceImpl)
     {
       serviceBinder.AddMethod(__Method_FindAdtMessageById, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::RegistrationService.API.Grpc.AdtMessageRequest, global::RegistrationService.API.Grpc.AdtMessageResponse>(serviceImpl.FindAdtMessageById));
+      serviceBinder.AddMethod(__Method_SearchAPIFindAdtMessageById, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::RegistrationService.API.Grpc.SearchAPIAdtMessageRequest, global::RegistrationService.API.Grpc.SearchAPIAdtMessageResponse>(serviceImpl.SearchAPIFindAdtMessageById));
     }
 
   }

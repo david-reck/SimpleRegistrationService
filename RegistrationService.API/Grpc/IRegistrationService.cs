@@ -9,5 +9,7 @@ namespace RegistrationService.API.Grpc
     public interface IRegistrationService
     {
         Task<AdtMessageResponse> FindAdtMessageById(AdtMessageRequest request, ServerCallContext context);
+
+        Task<SearchAPIAdtMessageResponse> SearchAPIFindAdtMessageById(SearchAPIAdtMessageRequest request, ServerCallContext context);
     }
 }
