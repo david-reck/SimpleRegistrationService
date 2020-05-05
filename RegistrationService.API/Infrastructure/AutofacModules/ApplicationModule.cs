@@ -33,6 +33,8 @@ namespace RegistrationService.API.Infrastructure.AutofacModules
                 .As<IClientGRPCClientService>()
                 .InstancePerLifetimeScope();
 
+ 
+
         }
     }
 }

@@ -38,6 +38,9 @@ namespace RegistrationService.API
 
         public virtual IServiceProvider ConfigureServices(IServiceCollection services)
         {
+            var dbSettings = new DocumentDBSettings();
+            Configuration.GetSection("DocumentDatabase").Bind(dbSettings);
+
             services
                 .AddGrpc().Services
                 .AddCustomMvc()
@@ -49,6 +52,8 @@ namespace RegistrationService.API
 
             var container = new ContainerBuilder();
             container.Populate(services);
+
+
 
             container.RegisterModule(new MediatorModule());
             container.RegisterModule(new ApplicationModule(Configuration.GetConnectionString("PatientConnex"), 
@@ -77,7 +82,8 @@ namespace RegistrationService.API
                 endpoints.MapDefaultControllerRoute();
                 endpoints.MapControllers();
 
-                endpoints.MapGrpcService<RegistrationService.API.Grpc.RegistrationService>();
+                
+            endpoints.MapGrpcService<RegistrationService.API.Grpc.RegistrationService>();
 
                 endpoints.MapGet("/", async context =>
                 {

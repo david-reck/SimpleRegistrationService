@@ -1,5 +1,6 @@
 ﻿using Grpc.Core;
 using Microsoft.Azure.Cosmos;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using RegistrationService.API.IntegrationEvents;
 using RegistrationService.Data.DTOs;
@@ -10,32 +11,27 @@ using System.Threading.Tasks;
 
 namespace RegistrationService.API.Grpc
 {
-    public class RegistrationService : RegistrationApiRetrieval.RegistrationApiRetrievalBase
+    public class RegistrationService : RegistrationApiRetrieval.RegistrationApiRetrievalBase, IRegistrationService
     {
+        private string _partitionKey;
+        private CosmosClient _cosmostClient;
+        private Container _container;
 
-        private readonly ILogger<RegistrationService> _logger;
-
-        public RegistrationService(ILogger<RegistrationService> logger)
+        public RegistrationService(IConfiguration config)
         {
-            _logger = logger;
+            var settings = new DocumentDBSettings();
+            config.GetSection("DocumentDatabase").Bind(settings);
+            _cosmostClient = new CosmosClient(settings.EndpointUri, settings.PrimaryKey, new CosmosClientOptions() { ApplicationName = settings.ApplicationName });
+            _container = _cosmostClient.GetContainer(settings.DatabaseName, settings.ContainerName);
+            _partitionKey = settings.PartitionKey;
         }
 
         public  override async Task<AdtMessageResponse> FindAdtMessageById(AdtMessageRequest request, ServerCallContext context)
         {
-
-            string EndpointUri = "https://pelitascosmosadmin.documents.azure.com:443/";
-            // The primary key for the Azure Cosmos account.
-            string PrimaryKey = "RUMdNn9Lf5QzyLOjrjn1CLPXapLmdL3sfwy8RrNje2wJVF4F5D1h9nhpwTVzvmX87QyBqWSILBCOQ6WxkoROzA==";
-
-            CosmosClient cosmosClient = new CosmosClient(EndpointUri, PrimaryKey, new CosmosClientOptions() { ApplicationName = "iPas.Registration" });
-            Database database = await cosmosClient.CreateDatabaseIfNotExistsAsync("ClientFeed");
-            Container container = await database.CreateContainerIfNotExistsAsync("ADT", "/ClientId", 400);
-
-            ItemResponse<RegistrationDTO> registration =  await container.ReadItemAsync<RegistrationDTO>(request.Id, new PartitionKey(request.ClientId));
+            ItemResponse<RegistrationDTO> registration =  await _container.ReadItemAsync<RegistrationDTO>(request.Id, new PartitionKey(request.ClientId));
             
             if (registration != null)
             {
-                Console.WriteLine(registration.Resource.ADTMessage);
                 return new AdtMessageResponse { AdtMessage = registration.Resource.ADTMessage };
             }
 
