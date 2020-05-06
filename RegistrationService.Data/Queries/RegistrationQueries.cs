@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using Microsoft.Data.SqlClient;
+using RegistrationService.Data.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,6 +15,26 @@ namespace RegistrationService.Data.Queries
         {
             _connectionString = !string.IsNullOrWhiteSpace(constr) ? constr : throw new ArgumentNullException(nameof(constr));
         }
+
+        public async Task<DocumentResult> GetDocumentByVisitID(int VisitID)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+
+                var result = await connection.QueryAsync<dynamic>(
+                   @"SELECT DocumentId FROM PatientTransaction where PatientTransactionID =
+                     (select max (PatientTransactionID) from PatientTransaction where PatientVisitId = @VisitID)"
+                        , new { VisitID }
+                    );
+
+                if (result.AsList().Count == 0)
+                    throw new KeyNotFoundException();
+
+                return MapDocumenttDetail(result);
+            }
+        }
+
         public  async Task<PatientDetail> GetPatientByAccountNumAsync(Int64 patientId)
         {
             using (var connection = new SqlConnection(_connectionString))
@@ -71,6 +92,16 @@ namespace RegistrationService.Data.Queries
             };
 
             return patientDetail;
+        }
+
+        private DocumentResult MapDocumenttDetail(dynamic result)
+        {
+            var Document = new DocumentResult
+            {
+                DocumnetID = result[0].DocumentId
+            };
+
+            return Document;
         }
     }
 }

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "fuL7NLxATRGGQtUb8CwrbkGQ7qkgVdMJutZ7DV/HknT+hSRam/HmPjziANw/yuNmbr8efmsrBsr7cjlwiv8RGg==",
+  "success": true,
+  "projectFilePath": "D:\\ProjectsAndPOC\\iPas.Infrastructure.EventBus\\iPas.Infrastructure.EventBus.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\skkar\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

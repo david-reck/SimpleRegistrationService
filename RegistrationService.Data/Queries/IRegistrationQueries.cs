@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RegistrationService.Data.DTOs;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -10,6 +11,8 @@ namespace RegistrationService.Data.Queries
 
         Task<IEnumerable<RegistrationSummary>> GetRegistrationsModifiedAfterAsync(DateTime modifiedAfter);
 
-       
+        Task<DocumentResult> GetDocumentByVisitID(int VisitID);
+
+
     }
 }

@@ -1,0 +1,354 @@
+2020-05-06 01:45:06.085 +05:30 [INF] Configuring web host (RegistrationService.API)...
+2020-05-06 01:45:07.932 +05:30 [INF] Starting web host (RegistrationService.API)...
+2020-05-06 01:45:08.330 +05:30 [WRN] Overriding address(es) 'http://localhost:5000'. Binding to endpoints defined in UseKestrel() instead.
+2020-05-06 01:47:25.812 +05:30 [WRN] 'AddEntityFramework*' was called on the service provider, but 'UseInternalServiceProvider' wasn't called in the DbContext options configuration. Remove the 'AddEntityFramework*' call as in most cases it's not needed and might cause conflicts with other products and services registered in the same service provider.
+2020-05-06 01:47:26.225 +05:30 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data, this mode should only be enabled during development.
+2020-05-06 01:54:10.738 +05:30 [INF] Configuring web host (RegistrationService.API)...
+2020-05-06 01:54:11.573 +05:30 [INF] Starting web host (RegistrationService.API)...
+2020-05-06 01:54:11.906 +05:30 [WRN] Overriding address(es) 'http://localhost:5000'. Binding to endpoints defined in UseKestrel() instead.
+2020-05-06 01:54:27.986 +05:30 [WRN] 'AddEntityFramework*' was called on the service provider, but 'UseInternalServiceProvider' wasn't called in the DbContext options configuration. Remove the 'AddEntityFramework*' call as in most cases it's not needed and might cause conflicts with other products and services registered in the same service provider.
+2020-05-06 01:54:28.389 +05:30 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data, this mode should only be enabled during development.
+2020-05-06 01:57:38.367 +05:30 [INF] Configuring web host (RegistrationService.API)...
+2020-05-06 01:57:39.173 +05:30 [INF] Starting web host (RegistrationService.API)...
+2020-05-06 01:57:39.536 +05:30 [WRN] Overriding address(es) 'http://localhost:5000'. Binding to endpoints defined in UseKestrel() instead.
+2020-05-06 01:57:51.599 +05:30 [WRN] 'AddEntityFramework*' was called on the service provider, but 'UseInternalServiceProvider' wasn't called in the DbContext options configuration. Remove the 'AddEntityFramework*' call as in most cases it's not needed and might cause conflicts with other products and services registered in the same service provider.
+2020-05-06 01:57:52.012 +05:30 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data, this mode should only be enabled during development.
+2020-05-06 01:59:39.887 +05:30 [INF] Configuring web host (RegistrationService.API)...
+2020-05-06 01:59:40.697 +05:30 [INF] Starting web host (RegistrationService.API)...
+2020-05-06 01:59:40.975 +05:30 [WRN] Overriding address(es) 'http://localhost:5000'. Binding to endpoints defined in UseKestrel() instead.
+2020-05-06 01:59:52.774 +05:30 [WRN] 'AddEntityFramework*' was called on the service provider, but 'UseInternalServiceProvider' wasn't called in the DbContext options configuration. Remove the 'AddEntityFramework*' call as in most cases it's not needed and might cause conflicts with other products and services registered in the same service provider.
+2020-05-06 01:59:53.218 +05:30 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data, this mode should only be enabled during development.
+2020-05-06 02:00:14.104 +05:30 [INF] -----Sending command: GetPatientDocumentCommand
+2020-05-06 02:00:25.753 +05:30 [WRN] The messaging entity $Default Could not be found.
+2020-05-06 02:00:25.790 +05:30 [WRN] 'AddEntityFramework*' was called on the service provider, but 'UseInternalServiceProvider' wasn't called in the DbContext options configuration. Remove the 'AddEntityFramework*' call as in most cases it's not needed and might cause conflicts with other products and services registered in the same service provider.
+2020-05-06 02:00:27.813 +05:30 [INF] ----- Begin transaction "084461df-ccea-40db-aee3-d6e6e60c3c32" for GetPatientDocumentCommand ({"PatientVisitID":5,"ClientID":1,"$type":"GetPatientDocumentCommand"})
+2020-05-06 02:00:56.008 +05:30 [ERR] ERROR Handling transaction for GetPatientDocumentCommand ({"PatientVisitID":5,"ClientID":1,"$type":"GetPatientDocumentCommand"})
+Microsoft.Azure.Cosmos.CosmosException : Response status code does not indicate success: NotFound (404); Substatus: 0; ActivityId: ac1cdf98-782d-43fa-bcd4-6446677b728f; Reason: ({
+  "Errors": [
+    "Resource Not Found"
+  ]
+});
+   at Microsoft.Azure.Cosmos.ResponseMessage.EnsureSuccessStatusCode()
+   at Microsoft.Azure.Cosmos.CosmosResponseFactory.ProcessMessageAsync[T](Task`1 cosmosResponseTask, Func`2 createResponse)
+   at Microsoft.Azure.Cosmos.ContainerCore.ReadItemAsync[T](String id, PartitionKey partitionKey, ItemRequestOptions requestOptions, CancellationToken cancellationToken)
+   at RegistrationService.API.Application.Commands.GetDocumentCommandHandler.Handle(GetPatientDocumentCommand request, CancellationToken cancellationToken) in D:\ProjectsAndPOC\RegistrationService.API\Application\Commands\GetDocumentCommandHandler.cs:line 34
+   at RegistrationService.API.Application.Behaviors.TransactionBehaviour`2.<>c__DisplayClass4_0.<<Handle>b__0>d.MoveNext() in D:\ProjectsAndPOC\RegistrationService.API\Application\Behaviors\TransactionBehaviour.cs:line 52
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.ExecutionStrategyExtensions.<>c.<<ExecuteAsync>b__3_0>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at RegistrationService.API.Application.Behaviors.TransactionBehaviour`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next) in D:\ProjectsAndPOC\RegistrationService.API\Application\Behaviors\TransactionBehaviour.cs:line 43
+{"Summary":{"StartUtc":"2020-05-05T20:30:51.8280211Z","TotalElapsedTime":"00:00:03.6983547","UserAgent":"cosmos-netstandard-sdk/3.8.0|3.7.1|78692|X64|Microsoft Windows 10.0.18363|.NET Core 3.1.3|","TotalRequestCount":1,"FailedRequestCount":1},"Context":[{"Id":"Microsoft.Azure.Cosmos.Handlers.RetryHandler","ElapsedTime":"00:00:03.6616844"},{"Id":"Microsoft.Azure.Cosmos.Handlers.RouterHandler","ElapsedTime":"00:00:03.6482236"},{"Id":"TransportHandler","ElapsedTime":"00:00:03.6466254"},{"Id":"AggregatedClientSideRequestStatistics","ContactedReplicas":[],"RegionsContacted":["https://pelitascosmosadmin-southcentralus.documents.azure.com:443/"],"FailedReplicas":[]},{"Id":"AddressResolutionStatistics","StartTimeUtc":"2020-05-05T20:30:53.7168245Z","EndTimeUtc":"2020-05-05T20:30:53.9662290Z","TargetEndpoint":"https://pelitascosmosadmin-southcentralus.documents.azure.com//addresses/?$resolveFor=dbs%2ftnVVAA%3d%3d%2fcolls%2ftnVVAOB6KDk%3d%2fdocs&$filter=protocol eq rntbd&$partitionKeyRangeIds=0"},{"Id":"StoreResponseStatistics","ResponseTimeUtc":"2020-05-05T20:30:55.4910925Z","ResourceType":"Document","OperationType":"Read","LocationEndpoint":"https://pelitascosmosadmin-southcentralus.documents.azure.com:443/","StoreResult":"StorePhysicalAddress: rntbd://cdb-ms-prod-southcentralus1-fd12.documents.azure.com:14038/apps/25f852a5-ad54-43c7-93bc-cbf32baee5fb/services/62b420e5-dcea-4b2e-8e40-6050297889fe/partitions/3d614e11-e5a9-45cf-b463-2232c84a4fc4/replicas/132318819035231687s/, LSN: 111, GlobalCommittedLsn: 110, PartitionKeyRangeId: 0, IsValid: True, StatusCode: 404, SubStatusCode: 0, RequestCharge: 1, ItemLSN: -1, SessionToken: -1#111, UsingLocalLSN: True, TransportException: null"}]}
+2020-05-06 02:00:56.242 +05:30 [ERR] Response status code does not indicate success: NotFound (404); Substatus: 0; ActivityId: ac1cdf98-782d-43fa-bcd4-6446677b728f; Reason: ({
+  "Errors": [
+    "Resource Not Found"
+  ]
+});
+Microsoft.Azure.Cosmos.CosmosException : Response status code does not indicate success: NotFound (404); Substatus: 0; ActivityId: ac1cdf98-782d-43fa-bcd4-6446677b728f; Reason: ({
+  "Errors": [
+    "Resource Not Found"
+  ]
+});
+   at Microsoft.Azure.Cosmos.ResponseMessage.EnsureSuccessStatusCode()
+   at Microsoft.Azure.Cosmos.CosmosResponseFactory.ProcessMessageAsync[T](Task`1 cosmosResponseTask, Func`2 createResponse)
+   at Microsoft.Azure.Cosmos.ContainerCore.ReadItemAsync[T](String id, PartitionKey partitionKey, ItemRequestOptions requestOptions, CancellationToken cancellationToken)
+   at RegistrationService.API.Application.Commands.GetDocumentCommandHandler.Handle(GetPatientDocumentCommand request, CancellationToken cancellationToken) in D:\ProjectsAndPOC\RegistrationService.API\Application\Commands\GetDocumentCommandHandler.cs:line 34
+   at RegistrationService.API.Application.Behaviors.TransactionBehaviour`2.<>c__DisplayClass4_0.<<Handle>b__0>d.MoveNext() in D:\ProjectsAndPOC\RegistrationService.API\Application\Behaviors\TransactionBehaviour.cs:line 52
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.ExecutionStrategyExtensions.<>c.<<ExecuteAsync>b__3_0>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at RegistrationService.API.Application.Behaviors.TransactionBehaviour`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next) in D:\ProjectsAndPOC\RegistrationService.API\Application\Behaviors\TransactionBehaviour.cs:line 43
+   at RegistrationService.API.Controllers.RegistrationController.GetPatientsDetailByID(Int64 PatientVisitID) in D:\ProjectsAndPOC\RegistrationService.API\Controllers\RegistrationController.cs:line 49
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+{"Summary":{"StartUtc":"2020-05-05T20:30:51.8280211Z","TotalElapsedTime":"00:00:03.6983547","UserAgent":"cosmos-netstandard-sdk/3.8.0|3.7.1|78692|X64|Microsoft Windows 10.0.18363|.NET Core 3.1.3|","TotalRequestCount":1,"FailedRequestCount":1},"Context":[{"Id":"Microsoft.Azure.Cosmos.Handlers.RetryHandler","ElapsedTime":"00:00:03.6616844"},{"Id":"Microsoft.Azure.Cosmos.Handlers.RouterHandler","ElapsedTime":"00:00:03.6482236"},{"Id":"TransportHandler","ElapsedTime":"00:00:03.6466254"},{"Id":"AggregatedClientSideRequestStatistics","ContactedReplicas":[],"RegionsContacted":["https://pelitascosmosadmin-southcentralus.documents.azure.com:443/"],"FailedReplicas":[]},{"Id":"AddressResolutionStatistics","StartTimeUtc":"2020-05-05T20:30:53.7168245Z","EndTimeUtc":"2020-05-05T20:30:53.9662290Z","TargetEndpoint":"https://pelitascosmosadmin-southcentralus.documents.azure.com//addresses/?$resolveFor=dbs%2ftnVVAA%3d%3d%2fcolls%2ftnVVAOB6KDk%3d%2fdocs&$filter=protocol eq rntbd&$partitionKeyRangeIds=0"},{"Id":"StoreResponseStatistics","ResponseTimeUtc":"2020-05-05T20:30:55.4910925Z","ResourceType":"Document","OperationType":"Read","LocationEndpoint":"https://pelitascosmosadmin-southcentralus.documents.azure.com:443/","StoreResult":"StorePhysicalAddress: rntbd://cdb-ms-prod-southcentralus1-fd12.documents.azure.com:14038/apps/25f852a5-ad54-43c7-93bc-cbf32baee5fb/services/62b420e5-dcea-4b2e-8e40-6050297889fe/partitions/3d614e11-e5a9-45cf-b463-2232c84a4fc4/replicas/132318819035231687s/, LSN: 111, GlobalCommittedLsn: 110, PartitionKeyRangeId: 0, IsValid: True, StatusCode: 404, SubStatusCode: 0, RequestCharge: 1, ItemLSN: -1, SessionToken: -1#111, UsingLocalLSN: True, TransportException: null"}]}
+2020-05-06 02:02:19.684 +05:30 [INF] -----Sending command: GetPatientDocumentCommand
+2020-05-06 02:02:19.940 +05:30 [INF] ----- Begin transaction "162611d7-2e46-4550-93bd-a12b662fbb36" for GetPatientDocumentCommand ({"PatientVisitID":0,"ClientID":1,"$type":"GetPatientDocumentCommand"})
+2020-05-06 02:03:23.490 +05:30 [ERR] ERROR Handling transaction for GetPatientDocumentCommand ({"PatientVisitID":0,"ClientID":1,"$type":"GetPatientDocumentCommand"})
+Microsoft.Azure.Cosmos.CosmosException : Response status code does not indicate success: NotFound (404); Substatus: 0; ActivityId: e9b25f5a-a05d-4b6a-b9bb-67d8086530f0; Reason: ({
+  "Errors": [
+    "Resource Not Found"
+  ]
+});
+   at Microsoft.Azure.Cosmos.ResponseMessage.EnsureSuccessStatusCode()
+   at Microsoft.Azure.Cosmos.CosmosResponseFactory.ProcessMessageAsync[T](Task`1 cosmosResponseTask, Func`2 createResponse)
+   at Microsoft.Azure.Cosmos.ContainerCore.ReadItemAsync[T](String id, PartitionKey partitionKey, ItemRequestOptions requestOptions, CancellationToken cancellationToken)
+   at RegistrationService.API.Application.Commands.GetDocumentCommandHandler.Handle(GetPatientDocumentCommand request, CancellationToken cancellationToken) in D:\ProjectsAndPOC\RegistrationService.API\Application\Commands\GetDocumentCommandHandler.cs:line 34
+   at RegistrationService.API.Application.Behaviors.TransactionBehaviour`2.<>c__DisplayClass4_0.<<Handle>b__0>d.MoveNext() in D:\ProjectsAndPOC\RegistrationService.API\Application\Behaviors\TransactionBehaviour.cs:line 52
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.ExecutionStrategyExtensions.<>c.<<ExecuteAsync>b__3_0>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at RegistrationService.API.Application.Behaviors.TransactionBehaviour`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next) in D:\ProjectsAndPOC\RegistrationService.API\Application\Behaviors\TransactionBehaviour.cs:line 43
+{"Summary":{"StartUtc":"2020-05-05T20:32:27.1588219Z","TotalElapsedTime":"00:00:48.1386785","UserAgent":"cosmos-netstandard-sdk/3.8.0|3.7.1|78692|X64|Microsoft Windows 10.0.18363|.NET Core 3.1.3|","TotalRequestCount":1,"FailedRequestCount":1},"Context":[{"Id":"Microsoft.Azure.Cosmos.Handlers.RetryHandler","ElapsedTime":"00:00:03.3710409"},{"Id":"Microsoft.Azure.Cosmos.Handlers.RouterHandler","ElapsedTime":"00:00:03.3685533"},{"Id":"TransportHandler","ElapsedTime":"00:00:03.3685291"},{"Id":"AggregatedClientSideRequestStatistics","ContactedReplicas":[],"RegionsContacted":["https://pelitascosmosadmin-southcentralus.documents.azure.com:443/"],"FailedReplicas":[]},{"Id":"AddressResolutionStatistics","StartTimeUtc":"2020-05-05T20:33:13.5920451Z","EndTimeUtc":"2020-05-05T20:33:13.8359183Z","TargetEndpoint":"https://pelitascosmosadmin-southcentralus.documents.azure.com//addresses/?$resolveFor=dbs%2ftnVVAA%3d%3d%2fcolls%2ftnVVAOB6KDk%3d%2fdocs&$filter=protocol eq rntbd&$partitionKeyRangeIds=0"},{"Id":"StoreResponseStatistics","ResponseTimeUtc":"2020-05-05T20:33:15.2939066Z","ResourceType":"Document","OperationType":"Read","LocationEndpoint":"https://pelitascosmosadmin-southcentralus.documents.azure.com:443/","StoreResult":"StorePhysicalAddress: rntbd://cdb-ms-prod-southcentralus1-fd12.documents.azure.com:14140/apps/25f852a5-ad54-43c7-93bc-cbf32baee5fb/services/62b420e5-dcea-4b2e-8e40-6050297889fe/partitions/3d614e11-e5a9-45cf-b463-2232c84a4fc4/replicas/132322686634126711s/, LSN: 111, GlobalCommittedLsn: 110, PartitionKeyRangeId: 0, IsValid: True, StatusCode: 404, SubStatusCode: 0, RequestCharge: 1, ItemLSN: -1, SessionToken: -1#111, UsingLocalLSN: True, TransportException: null"}]}
+2020-05-06 02:03:23.654 +05:30 [ERR] Response status code does not indicate success: NotFound (404); Substatus: 0; ActivityId: e9b25f5a-a05d-4b6a-b9bb-67d8086530f0; Reason: ({
+  "Errors": [
+    "Resource Not Found"
+  ]
+});
+Microsoft.Azure.Cosmos.CosmosException : Response status code does not indicate success: NotFound (404); Substatus: 0; ActivityId: e9b25f5a-a05d-4b6a-b9bb-67d8086530f0; Reason: ({
+  "Errors": [
+    "Resource Not Found"
+  ]
+});
+   at Microsoft.Azure.Cosmos.ResponseMessage.EnsureSuccessStatusCode()
+   at Microsoft.Azure.Cosmos.CosmosResponseFactory.ProcessMessageAsync[T](Task`1 cosmosResponseTask, Func`2 createResponse)
+   at Microsoft.Azure.Cosmos.ContainerCore.ReadItemAsync[T](String id, PartitionKey partitionKey, ItemRequestOptions requestOptions, CancellationToken cancellationToken)
+   at RegistrationService.API.Application.Commands.GetDocumentCommandHandler.Handle(GetPatientDocumentCommand request, CancellationToken cancellationToken) in D:\ProjectsAndPOC\RegistrationService.API\Application\Commands\GetDocumentCommandHandler.cs:line 34
+   at RegistrationService.API.Application.Behaviors.TransactionBehaviour`2.<>c__DisplayClass4_0.<<Handle>b__0>d.MoveNext() in D:\ProjectsAndPOC\RegistrationService.API\Application\Behaviors\TransactionBehaviour.cs:line 52
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.ExecutionStrategyExtensions.<>c.<<ExecuteAsync>b__3_0>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at RegistrationService.API.Application.Behaviors.TransactionBehaviour`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next) in D:\ProjectsAndPOC\RegistrationService.API\Application\Behaviors\TransactionBehaviour.cs:line 43
+   at RegistrationService.API.Controllers.RegistrationController.GetPatientsDetailByID(Int64 PatientVisitID) in D:\ProjectsAndPOC\RegistrationService.API\Controllers\RegistrationController.cs:line 49
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+{"Summary":{"StartUtc":"2020-05-05T20:32:27.1588219Z","TotalElapsedTime":"00:00:48.1386785","UserAgent":"cosmos-netstandard-sdk/3.8.0|3.7.1|78692|X64|Microsoft Windows 10.0.18363|.NET Core 3.1.3|","TotalRequestCount":1,"FailedRequestCount":1},"Context":[{"Id":"Microsoft.Azure.Cosmos.Handlers.RetryHandler","ElapsedTime":"00:00:03.3710409"},{"Id":"Microsoft.Azure.Cosmos.Handlers.RouterHandler","ElapsedTime":"00:00:03.3685533"},{"Id":"TransportHandler","ElapsedTime":"00:00:03.3685291"},{"Id":"AggregatedClientSideRequestStatistics","ContactedReplicas":[],"RegionsContacted":["https://pelitascosmosadmin-southcentralus.documents.azure.com:443/"],"FailedReplicas":[]},{"Id":"AddressResolutionStatistics","StartTimeUtc":"2020-05-05T20:33:13.5920451Z","EndTimeUtc":"2020-05-05T20:33:13.8359183Z","TargetEndpoint":"https://pelitascosmosadmin-southcentralus.documents.azure.com//addresses/?$resolveFor=dbs%2ftnVVAA%3d%3d%2fcolls%2ftnVVAOB6KDk%3d%2fdocs&$filter=protocol eq rntbd&$partitionKeyRangeIds=0"},{"Id":"StoreResponseStatistics","ResponseTimeUtc":"2020-05-05T20:33:15.2939066Z","ResourceType":"Document","OperationType":"Read","LocationEndpoint":"https://pelitascosmosadmin-southcentralus.documents.azure.com:443/","StoreResult":"StorePhysicalAddress: rntbd://cdb-ms-prod-southcentralus1-fd12.documents.azure.com:14140/apps/25f852a5-ad54-43c7-93bc-cbf32baee5fb/services/62b420e5-dcea-4b2e-8e40-6050297889fe/partitions/3d614e11-e5a9-45cf-b463-2232c84a4fc4/replicas/132322686634126711s/, LSN: 111, GlobalCommittedLsn: 110, PartitionKeyRangeId: 0, IsValid: True, StatusCode: 404, SubStatusCode: 0, RequestCharge: 1, ItemLSN: -1, SessionToken: -1#111, UsingLocalLSN: True, TransportException: null"}]}
+2020-05-06 02:07:18.379 +05:30 [INF] Configuring web host (RegistrationService.API)...
+2020-05-06 02:07:19.382 +05:30 [INF] Starting web host (RegistrationService.API)...
+2020-05-06 02:07:19.845 +05:30 [WRN] Overriding address(es) 'http://localhost:5000'. Binding to endpoints defined in UseKestrel() instead.
+2020-05-06 02:07:24.474 +05:30 [WRN] 'AddEntityFramework*' was called on the service provider, but 'UseInternalServiceProvider' wasn't called in the DbContext options configuration. Remove the 'AddEntityFramework*' call as in most cases it's not needed and might cause conflicts with other products and services registered in the same service provider.
+2020-05-06 02:07:24.969 +05:30 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data, this mode should only be enabled during development.
+2020-05-06 02:07:34.855 +05:30 [INF] -----Sending command: GetPatientDocumentCommand
+2020-05-06 02:07:38.718 +05:30 [WRN] The messaging entity $Default Could not be found.
+2020-05-06 02:07:38.757 +05:30 [WRN] 'AddEntityFramework*' was called on the service provider, but 'UseInternalServiceProvider' wasn't called in the DbContext options configuration. Remove the 'AddEntityFramework*' call as in most cases it's not needed and might cause conflicts with other products and services registered in the same service provider.
+2020-05-06 02:07:40.626 +05:30 [INF] ----- Begin transaction "ea5418d8-9b42-424b-9796-6ddbf18e1333" for GetPatientDocumentCommand ({"PatientVisitID":5,"ClientID":1,"$type":"GetPatientDocumentCommand"})
+2020-05-06 02:08:30.788 +05:30 [ERR] ERROR Handling transaction for GetPatientDocumentCommand ({"PatientVisitID":5,"ClientID":1,"$type":"GetPatientDocumentCommand"})
+Microsoft.Azure.Cosmos.CosmosException : Response status code does not indicate success: NotFound (404); Substatus: 0; ActivityId: 44bc0249-66e7-400f-85f7-81d5d65cad29; Reason: ({
+  "Errors": [
+    "Resource Not Found"
+  ]
+});
+   at Microsoft.Azure.Cosmos.ResponseMessage.EnsureSuccessStatusCode()
+   at Microsoft.Azure.Cosmos.CosmosResponseFactory.ProcessMessageAsync[T](Task`1 cosmosResponseTask, Func`2 createResponse)
+   at Microsoft.Azure.Cosmos.ContainerCore.ReadItemAsync[T](String id, PartitionKey partitionKey, ItemRequestOptions requestOptions, CancellationToken cancellationToken)
+   at RegistrationService.API.Application.Commands.GetDocumentCommandHandler.Handle(GetPatientDocumentCommand request, CancellationToken cancellationToken) in D:\ProjectsAndPOC\RegistrationService.API\Application\Commands\GetDocumentCommandHandler.cs:line 34
+   at RegistrationService.API.Application.Behaviors.TransactionBehaviour`2.<>c__DisplayClass4_0.<<Handle>b__0>d.MoveNext() in D:\ProjectsAndPOC\RegistrationService.API\Application\Behaviors\TransactionBehaviour.cs:line 52
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.ExecutionStrategyExtensions.<>c.<<ExecuteAsync>b__3_0>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at RegistrationService.API.Application.Behaviors.TransactionBehaviour`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next) in D:\ProjectsAndPOC\RegistrationService.API\Application\Behaviors\TransactionBehaviour.cs:line 43
+{"Summary":{"StartUtc":"2020-05-05T20:38:26.5902955Z","TotalElapsedTime":"00:00:03.7196427","UserAgent":"cosmos-netstandard-sdk/3.8.0|3.7.1|01458|X64|Microsoft Windows 10.0.18363|.NET Core 3.1.3|","TotalRequestCount":1,"FailedRequestCount":1},"Context":[{"Id":"Microsoft.Azure.Cosmos.Handlers.RetryHandler","ElapsedTime":"00:00:03.6823370"},{"Id":"Microsoft.Azure.Cosmos.Handlers.RouterHandler","ElapsedTime":"00:00:03.6683464"},{"Id":"TransportHandler","ElapsedTime":"00:00:03.6658925"},{"Id":"AggregatedClientSideRequestStatistics","ContactedReplicas":[],"RegionsContacted":["https://pelitascosmosadmin-southcentralus.documents.azure.com:443/"],"FailedReplicas":[]},{"Id":"AddressResolutionStatistics","StartTimeUtc":"2020-05-05T20:38:28.5117056Z","EndTimeUtc":"2020-05-05T20:38:28.7752799Z","TargetEndpoint":"https://pelitascosmosadmin-southcentralus.documents.azure.com//addresses/?$resolveFor=dbs%2ftnVVAA%3d%3d%2fcolls%2ftnVVAOB6KDk%3d%2fdocs&$filter=protocol eq rntbd&$partitionKeyRangeIds=0"},{"Id":"StoreResponseStatistics","ResponseTimeUtc":"2020-05-05T20:38:30.2754904Z","ResourceType":"Document","OperationType":"Read","LocationEndpoint":"https://pelitascosmosadmin-southcentralus.documents.azure.com:443/","StoreResult":"StorePhysicalAddress: rntbd://cdb-ms-prod-southcentralus1-fd12.documents.azure.com:14163/apps/25f852a5-ad54-43c7-93bc-cbf32baee5fb/services/62b420e5-dcea-4b2e-8e40-6050297889fe/partitions/3d614e11-e5a9-45cf-b463-2232c84a4fc4/replicas/132322686634126712p/, LSN: 111, GlobalCommittedLsn: 111, PartitionKeyRangeId: 0, IsValid: True, StatusCode: 404, SubStatusCode: 0, RequestCharge: 1, ItemLSN: -1, SessionToken: -1#111, UsingLocalLSN: True, TransportException: null"}]}
+2020-05-06 02:08:31.018 +05:30 [ERR] Response status code does not indicate success: NotFound (404); Substatus: 0; ActivityId: 44bc0249-66e7-400f-85f7-81d5d65cad29; Reason: ({
+  "Errors": [
+    "Resource Not Found"
+  ]
+});
+Microsoft.Azure.Cosmos.CosmosException : Response status code does not indicate success: NotFound (404); Substatus: 0; ActivityId: 44bc0249-66e7-400f-85f7-81d5d65cad29; Reason: ({
+  "Errors": [
+    "Resource Not Found"
+  ]
+});
+   at Microsoft.Azure.Cosmos.ResponseMessage.EnsureSuccessStatusCode()
+   at Microsoft.Azure.Cosmos.CosmosResponseFactory.ProcessMessageAsync[T](Task`1 cosmosResponseTask, Func`2 createResponse)
+   at Microsoft.Azure.Cosmos.ContainerCore.ReadItemAsync[T](String id, PartitionKey partitionKey, ItemRequestOptions requestOptions, CancellationToken cancellationToken)
+   at RegistrationService.API.Application.Commands.GetDocumentCommandHandler.Handle(GetPatientDocumentCommand request, CancellationToken cancellationToken) in D:\ProjectsAndPOC\RegistrationService.API\Application\Commands\GetDocumentCommandHandler.cs:line 34
+   at RegistrationService.API.Application.Behaviors.TransactionBehaviour`2.<>c__DisplayClass4_0.<<Handle>b__0>d.MoveNext() in D:\ProjectsAndPOC\RegistrationService.API\Application\Behaviors\TransactionBehaviour.cs:line 52
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.ExecutionStrategyExtensions.<>c.<<ExecuteAsync>b__3_0>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at RegistrationService.API.Application.Behaviors.TransactionBehaviour`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next) in D:\ProjectsAndPOC\RegistrationService.API\Application\Behaviors\TransactionBehaviour.cs:line 43
+   at RegistrationService.API.Controllers.RegistrationController.GetPatientsDetailByID(Int64 PatientVisitID) in D:\ProjectsAndPOC\RegistrationService.API\Controllers\RegistrationController.cs:line 49
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+{"Summary":{"StartUtc":"2020-05-05T20:38:26.5902955Z","TotalElapsedTime":"00:00:03.7196427","UserAgent":"cosmos-netstandard-sdk/3.8.0|3.7.1|01458|X64|Microsoft Windows 10.0.18363|.NET Core 3.1.3|","TotalRequestCount":1,"FailedRequestCount":1},"Context":[{"Id":"Microsoft.Azure.Cosmos.Handlers.RetryHandler","ElapsedTime":"00:00:03.6823370"},{"Id":"Microsoft.Azure.Cosmos.Handlers.RouterHandler","ElapsedTime":"00:00:03.6683464"},{"Id":"TransportHandler","ElapsedTime":"00:00:03.6658925"},{"Id":"AggregatedClientSideRequestStatistics","ContactedReplicas":[],"RegionsContacted":["https://pelitascosmosadmin-southcentralus.documents.azure.com:443/"],"FailedReplicas":[]},{"Id":"AddressResolutionStatistics","StartTimeUtc":"2020-05-05T20:38:28.5117056Z","EndTimeUtc":"2020-05-05T20:38:28.7752799Z","TargetEndpoint":"https://pelitascosmosadmin-southcentralus.documents.azure.com//addresses/?$resolveFor=dbs%2ftnVVAA%3d%3d%2fcolls%2ftnVVAOB6KDk%3d%2fdocs&$filter=protocol eq rntbd&$partitionKeyRangeIds=0"},{"Id":"StoreResponseStatistics","ResponseTimeUtc":"2020-05-05T20:38:30.2754904Z","ResourceType":"Document","OperationType":"Read","LocationEndpoint":"https://pelitascosmosadmin-southcentralus.documents.azure.com:443/","StoreResult":"StorePhysicalAddress: rntbd://cdb-ms-prod-southcentralus1-fd12.documents.azure.com:14163/apps/25f852a5-ad54-43c7-93bc-cbf32baee5fb/services/62b420e5-dcea-4b2e-8e40-6050297889fe/partitions/3d614e11-e5a9-45cf-b463-2232c84a4fc4/replicas/132322686634126712p/, LSN: 111, GlobalCommittedLsn: 111, PartitionKeyRangeId: 0, IsValid: True, StatusCode: 404, SubStatusCode: 0, RequestCharge: 1, ItemLSN: -1, SessionToken: -1#111, UsingLocalLSN: True, TransportException: null"}]}
+2020-05-06 02:09:21.120 +05:30 [INF] -----Sending command: GetPatientDocumentCommand
+2020-05-06 02:09:21.367 +05:30 [INF] ----- Begin transaction "a3cac57c-b60f-40c9-b702-84972fd3a648" for GetPatientDocumentCommand ({"PatientVisitID":5,"ClientID":1,"$type":"GetPatientDocumentCommand"})
+2020-05-06 02:13:56.588 +05:30 [INF] Configuring web host (RegistrationService.API)...
+2020-05-06 02:13:57.802 +05:30 [INF] Starting web host (RegistrationService.API)...
+2020-05-06 02:13:58.073 +05:30 [WRN] Overriding address(es) 'http://localhost:5000'. Binding to endpoints defined in UseKestrel() instead.
+2020-05-06 02:14:09.347 +05:30 [WRN] 'AddEntityFramework*' was called on the service provider, but 'UseInternalServiceProvider' wasn't called in the DbContext options configuration. Remove the 'AddEntityFramework*' call as in most cases it's not needed and might cause conflicts with other products and services registered in the same service provider.
+2020-05-06 02:14:09.751 +05:30 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data, this mode should only be enabled during development.
+2020-05-06 02:14:23.989 +05:30 [INF] -----Sending command: GetPatientDocumentCommand
+2020-05-06 02:14:28.051 +05:30 [WRN] The messaging entity $Default Could not be found.
+2020-05-06 02:14:28.091 +05:30 [WRN] 'AddEntityFramework*' was called on the service provider, but 'UseInternalServiceProvider' wasn't called in the DbContext options configuration. Remove the 'AddEntityFramework*' call as in most cases it's not needed and might cause conflicts with other products and services registered in the same service provider.
+2020-05-06 02:14:30.010 +05:30 [INF] ----- Begin transaction "c6084eeb-5e92-4eb3-99df-c3cb1fcc8aaa" for GetPatientDocumentCommand ({"PatientVisitID":5,"ClientID":1,"$type":"GetPatientDocumentCommand"})
+2020-05-06 02:14:39.017 +05:30 [ERR] ERROR Handling transaction for GetPatientDocumentCommand ({"PatientVisitID":5,"ClientID":1,"$type":"GetPatientDocumentCommand"})
+System.InvalidCastException: Object must implement IConvertible.
+   at System.Convert.ChangeType(Object value, Type conversionType, IFormatProvider provider)
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in C:\projects\dapper\Dapper\SqlMapper.Async.cs:line 446
+   at RegistrationService.Data.Queries.RegistrationQueries.GetDocumentByVisitID(Int32 VisitID) in D:\ProjectsAndPOC\RegistrationService.Data\Queries\RegistrationQueries.cs:line 24
+   at RegistrationService.API.Application.Commands.GetDocumentCommandHandler.Handle(GetPatientDocumentCommand request, CancellationToken cancellationToken) in D:\ProjectsAndPOC\RegistrationService.API\Application\Commands\GetDocumentCommandHandler.cs:line 34
+   at RegistrationService.API.Application.Behaviors.TransactionBehaviour`2.<>c__DisplayClass4_0.<<Handle>b__0>d.MoveNext() in D:\ProjectsAndPOC\RegistrationService.API\Application\Behaviors\TransactionBehaviour.cs:line 52
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.ExecutionStrategyExtensions.<>c.<<ExecuteAsync>b__3_0>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at RegistrationService.API.Application.Behaviors.TransactionBehaviour`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next) in D:\ProjectsAndPOC\RegistrationService.API\Application\Behaviors\TransactionBehaviour.cs:line 43
+2020-05-06 02:14:39.150 +05:30 [ERR] Object must implement IConvertible.
+System.InvalidCastException: Object must implement IConvertible.
+   at System.Convert.ChangeType(Object value, Type conversionType, IFormatProvider provider)
+   at Dapper.SqlMapper.QueryAsync[T](IDbConnection cnn, Type effectiveType, CommandDefinition command) in C:\projects\dapper\Dapper\SqlMapper.Async.cs:line 446
+   at RegistrationService.Data.Queries.RegistrationQueries.GetDocumentByVisitID(Int32 VisitID) in D:\ProjectsAndPOC\RegistrationService.Data\Queries\RegistrationQueries.cs:line 24
+   at RegistrationService.API.Application.Commands.GetDocumentCommandHandler.Handle(GetPatientDocumentCommand request, CancellationToken cancellationToken) in D:\ProjectsAndPOC\RegistrationService.API\Application\Commands\GetDocumentCommandHandler.cs:line 34
+   at RegistrationService.API.Application.Behaviors.TransactionBehaviour`2.<>c__DisplayClass4_0.<<Handle>b__0>d.MoveNext() in D:\ProjectsAndPOC\RegistrationService.API\Application\Behaviors\TransactionBehaviour.cs:line 52
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.ExecutionStrategyExtensions.<>c.<<ExecuteAsync>b__3_0>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at RegistrationService.API.Application.Behaviors.TransactionBehaviour`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next) in D:\ProjectsAndPOC\RegistrationService.API\Application\Behaviors\TransactionBehaviour.cs:line 43
+   at RegistrationService.API.Controllers.RegistrationController.GetPatientsDetailByID(Int64 PatientVisitID) in D:\ProjectsAndPOC\RegistrationService.API\Controllers\RegistrationController.cs:line 49
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+2020-05-06 02:16:11.027 +05:30 [INF] Configuring web host (RegistrationService.API)...
+2020-05-06 02:16:12.014 +05:30 [INF] Starting web host (RegistrationService.API)...
+2020-05-06 02:16:12.403 +05:30 [WRN] Overriding address(es) 'http://localhost:5000'. Binding to endpoints defined in UseKestrel() instead.
+2020-05-06 02:16:19.989 +05:30 [WRN] 'AddEntityFramework*' was called on the service provider, but 'UseInternalServiceProvider' wasn't called in the DbContext options configuration. Remove the 'AddEntityFramework*' call as in most cases it's not needed and might cause conflicts with other products and services registered in the same service provider.
+2020-05-06 02:16:20.395 +05:30 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data, this mode should only be enabled during development.
+2020-05-06 02:16:36.385 +05:30 [INF] -----Sending command: GetPatientDocumentCommand
+2020-05-06 02:16:40.190 +05:30 [WRN] The messaging entity $Default Could not be found.
+2020-05-06 02:16:40.231 +05:30 [WRN] 'AddEntityFramework*' was called on the service provider, but 'UseInternalServiceProvider' wasn't called in the DbContext options configuration. Remove the 'AddEntityFramework*' call as in most cases it's not needed and might cause conflicts with other products and services registered in the same service provider.
+2020-05-06 02:16:42.244 +05:30 [INF] ----- Begin transaction "f12040d1-6b12-470a-8267-9226a9f8a5d1" for GetPatientDocumentCommand ({"PatientVisitID":5,"ClientID":1,"$type":"GetPatientDocumentCommand"})
+2020-05-06 02:17:08.107 +05:30 [ERR] ERROR Handling transaction for GetPatientDocumentCommand ({"PatientVisitID":5,"ClientID":1,"$type":"GetPatientDocumentCommand"})
+System.InvalidCastException: Unable to cast object of type 'System.Collections.Generic.List`1[System.Object]' to type 'System.IConvertible'.
+   at System.Convert.ToInt64(Object value)
+   at RegistrationService.Data.Queries.RegistrationQueries.GetDocumentByVisitID(Int32 VisitID) in D:\ProjectsAndPOC\RegistrationService.Data\Queries\RegistrationQueries.cs:line 33
+   at RegistrationService.API.Application.Commands.GetDocumentCommandHandler.Handle(GetPatientDocumentCommand request, CancellationToken cancellationToken) in D:\ProjectsAndPOC\RegistrationService.API\Application\Commands\GetDocumentCommandHandler.cs:line 34
+   at RegistrationService.API.Application.Behaviors.TransactionBehaviour`2.<>c__DisplayClass4_0.<<Handle>b__0>d.MoveNext() in D:\ProjectsAndPOC\RegistrationService.API\Application\Behaviors\TransactionBehaviour.cs:line 52
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.ExecutionStrategyExtensions.<>c.<<ExecuteAsync>b__3_0>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at RegistrationService.API.Application.Behaviors.TransactionBehaviour`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next) in D:\ProjectsAndPOC\RegistrationService.API\Application\Behaviors\TransactionBehaviour.cs:line 43
+2020-05-06 02:17:08.226 +05:30 [ERR] Unable to cast object of type 'System.Collections.Generic.List`1[System.Object]' to type 'System.IConvertible'.
+System.InvalidCastException: Unable to cast object of type 'System.Collections.Generic.List`1[System.Object]' to type 'System.IConvertible'.
+   at System.Convert.ToInt64(Object value)
+   at RegistrationService.Data.Queries.RegistrationQueries.GetDocumentByVisitID(Int32 VisitID) in D:\ProjectsAndPOC\RegistrationService.Data\Queries\RegistrationQueries.cs:line 33
+   at RegistrationService.API.Application.Commands.GetDocumentCommandHandler.Handle(GetPatientDocumentCommand request, CancellationToken cancellationToken) in D:\ProjectsAndPOC\RegistrationService.API\Application\Commands\GetDocumentCommandHandler.cs:line 34
+   at RegistrationService.API.Application.Behaviors.TransactionBehaviour`2.<>c__DisplayClass4_0.<<Handle>b__0>d.MoveNext() in D:\ProjectsAndPOC\RegistrationService.API\Application\Behaviors\TransactionBehaviour.cs:line 52
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.ExecutionStrategyExtensions.<>c.<<ExecuteAsync>b__3_0>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at RegistrationService.API.Application.Behaviors.TransactionBehaviour`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next) in D:\ProjectsAndPOC\RegistrationService.API\Application\Behaviors\TransactionBehaviour.cs:line 43
+   at RegistrationService.API.Controllers.RegistrationController.GetPatientsDetailByID(Int64 PatientVisitID) in D:\ProjectsAndPOC\RegistrationService.API\Controllers\RegistrationController.cs:line 49
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+2020-05-06 02:29:24.681 +05:30 [INF] Configuring web host (RegistrationService.API)...
+2020-05-06 02:29:25.891 +05:30 [INF] Starting web host (RegistrationService.API)...
+2020-05-06 02:29:26.293 +05:30 [WRN] Overriding address(es) 'http://localhost:5000'. Binding to endpoints defined in UseKestrel() instead.
+2020-05-06 02:29:28.855 +05:30 [WRN] 'AddEntityFramework*' was called on the service provider, but 'UseInternalServiceProvider' wasn't called in the DbContext options configuration. Remove the 'AddEntityFramework*' call as in most cases it's not needed and might cause conflicts with other products and services registered in the same service provider.
+2020-05-06 02:29:29.504 +05:30 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data, this mode should only be enabled during development.
+2020-05-06 02:29:43.817 +05:30 [INF] -----Sending command: GetPatientDocumentCommand
+2020-05-06 02:29:47.708 +05:30 [WRN] The messaging entity $Default Could not be found.
+2020-05-06 02:29:47.746 +05:30 [WRN] 'AddEntityFramework*' was called on the service provider, but 'UseInternalServiceProvider' wasn't called in the DbContext options configuration. Remove the 'AddEntityFramework*' call as in most cases it's not needed and might cause conflicts with other products and services registered in the same service provider.
+2020-05-06 02:29:49.633 +05:30 [INF] ----- Begin transaction "25dccc5c-79fd-4017-b984-f29b9344b983" for GetPatientDocumentCommand ({"PatientVisitID":5,"ClientID":1,"$type":"GetPatientDocumentCommand"})
+2020-05-06 02:30:12.320 +05:30 [ERR] ERROR Handling transaction for GetPatientDocumentCommand ({"PatientVisitID":5,"ClientID":1,"$type":"GetPatientDocumentCommand"})
+Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot implicitly convert type 'System.Guid' to 'string'
+   at CallSite.Target(Closure , CallSite , Object )
+   at System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   at RegistrationService.Data.Queries.RegistrationQueries.MapDocumenttDetail(Object result) in D:\ProjectsAndPOC\RegistrationService.Data\Queries\RegistrationQueries.cs:line 99
+   at RegistrationService.Data.Queries.RegistrationQueries.GetDocumentByVisitID(Int32 VisitID) in D:\ProjectsAndPOC\RegistrationService.Data\Queries\RegistrationQueries.cs:line 34
+   at RegistrationService.API.Application.Commands.GetDocumentCommandHandler.Handle(GetPatientDocumentCommand request, CancellationToken cancellationToken) in D:\ProjectsAndPOC\RegistrationService.API\Application\Commands\GetDocumentCommandHandler.cs:line 31
+   at RegistrationService.API.Application.Behaviors.TransactionBehaviour`2.<>c__DisplayClass4_0.<<Handle>b__0>d.MoveNext() in D:\ProjectsAndPOC\RegistrationService.API\Application\Behaviors\TransactionBehaviour.cs:line 52
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.ExecutionStrategyExtensions.<>c.<<ExecuteAsync>b__3_0>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at RegistrationService.API.Application.Behaviors.TransactionBehaviour`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next) in D:\ProjectsAndPOC\RegistrationService.API\Application\Behaviors\TransactionBehaviour.cs:line 43
+2020-05-06 02:30:12.446 +05:30 [ERR] Cannot implicitly convert type 'System.Guid' to 'string'
+Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: Cannot implicitly convert type 'System.Guid' to 'string'
+   at CallSite.Target(Closure , CallSite , Object )
+   at System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   at RegistrationService.Data.Queries.RegistrationQueries.MapDocumenttDetail(Object result) in D:\ProjectsAndPOC\RegistrationService.Data\Queries\RegistrationQueries.cs:line 99
+   at RegistrationService.Data.Queries.RegistrationQueries.GetDocumentByVisitID(Int32 VisitID) in D:\ProjectsAndPOC\RegistrationService.Data\Queries\RegistrationQueries.cs:line 34
+   at RegistrationService.API.Application.Commands.GetDocumentCommandHandler.Handle(GetPatientDocumentCommand request, CancellationToken cancellationToken) in D:\ProjectsAndPOC\RegistrationService.API\Application\Commands\GetDocumentCommandHandler.cs:line 31
+   at RegistrationService.API.Application.Behaviors.TransactionBehaviour`2.<>c__DisplayClass4_0.<<Handle>b__0>d.MoveNext() in D:\ProjectsAndPOC\RegistrationService.API\Application\Behaviors\TransactionBehaviour.cs:line 52
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.ExecutionStrategyExtensions.<>c.<<ExecuteAsync>b__3_0>d.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementationAsync[TState,TResult](Func`4 operation, Func`4 verifySucceeded, TState state, CancellationToken cancellationToken)
+   at RegistrationService.API.Application.Behaviors.TransactionBehaviour`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next) in D:\ProjectsAndPOC\RegistrationService.API\Application\Behaviors\TransactionBehaviour.cs:line 43
+   at RegistrationService.API.Controllers.RegistrationController.GetPatientsDetailByID(Int64 PatientVisitID) in D:\ProjectsAndPOC\RegistrationService.API\Controllers\RegistrationController.cs:line 49
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+2020-05-06 02:32:23.027 +05:30 [INF] Configuring web host (RegistrationService.API)...
+2020-05-06 02:32:24.233 +05:30 [INF] Starting web host (RegistrationService.API)...
+2020-05-06 02:32:24.532 +05:30 [WRN] Overriding address(es) 'http://localhost:5000'. Binding to endpoints defined in UseKestrel() instead.
+2020-05-06 02:32:40.495 +05:30 [WRN] 'AddEntityFramework*' was called on the service provider, but 'UseInternalServiceProvider' wasn't called in the DbContext options configuration. Remove the 'AddEntityFramework*' call as in most cases it's not needed and might cause conflicts with other products and services registered in the same service provider.
+2020-05-06 02:32:40.910 +05:30 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data, this mode should only be enabled during development.
+2020-05-06 02:32:55.452 +05:30 [INF] -----Sending command: GetPatientDocumentCommand
+2020-05-06 02:32:59.095 +05:30 [WRN] The messaging entity $Default Could not be found.
+2020-05-06 02:32:59.132 +05:30 [WRN] 'AddEntityFramework*' was called on the service provider, but 'UseInternalServiceProvider' wasn't called in the DbContext options configuration. Remove the 'AddEntityFramework*' call as in most cases it's not needed and might cause conflicts with other products and services registered in the same service provider.
+2020-05-06 02:33:01.212 +05:30 [INF] ----- Begin transaction "593bbfbd-7fce-42fd-8436-f939be1b059a" for GetPatientDocumentCommand ({"PatientVisitID":5,"ClientID":1,"$type":"GetPatientDocumentCommand"})
+2020-05-06 02:36:11.649 +05:30 [INF] ----- Commit transaction "593bbfbd-7fce-42fd-8436-f939be1b059a" for GetPatientDocumentCommand
+2020-05-06 02:36:36.872 +05:30 [INF] -----Sending command: GetPatientDocumentCommand
+2020-05-06 02:36:37.129 +05:30 [INF] ----- Begin transaction "c6d00848-dc65-4332-a12c-cc36eb2e4422" for GetPatientDocumentCommand ({"PatientVisitID":5,"ClientID":1,"$type":"GetPatientDocumentCommand"})
+2020-05-06 02:38:11.202 +05:30 [INF] ----- Commit transaction "c6d00848-dc65-4332-a12c-cc36eb2e4422" for GetPatientDocumentCommand
+2020-05-06 02:38:38.853 +05:30 [INF] -----Sending command: GetPatientDocumentCommand
+2020-05-06 02:38:39.117 +05:30 [INF] ----- Begin transaction "a9048578-0630-4644-a1c5-e543a12ca62e" for GetPatientDocumentCommand ({"PatientVisitID":5,"ClientID":1,"$type":"GetPatientDocumentCommand"})
+2020-05-06 02:39:19.471 +05:30 [INF] ----- Commit transaction "a9048578-0630-4644-a1c5-e543a12ca62e" for GetPatientDocumentCommand
+2020-05-06 02:39:33.295 +05:30 [INF] -----Sending command: GetPatientDocumentCommand
+2020-05-06 02:39:33.557 +05:30 [INF] ----- Begin transaction "d8f5ff7a-52c7-4ad8-9316-1f5d85a91c4f" for GetPatientDocumentCommand ({"PatientVisitID":5,"ClientID":1,"$type":"GetPatientDocumentCommand"})
+2020-05-06 02:40:21.863 +05:30 [INF] ----- Commit transaction "d8f5ff7a-52c7-4ad8-9316-1f5d85a91c4f" for GetPatientDocumentCommand
+2020-05-06 02:40:40.726 +05:30 [INF] -----Sending command: GetPatientDocumentCommand
+2020-05-06 02:40:40.981 +05:30 [INF] ----- Begin transaction "16e856d6-05bd-4bb9-8468-f9ad64c9842a" for GetPatientDocumentCommand ({"PatientVisitID":5,"ClientID":1,"$type":"GetPatientDocumentCommand"})
+2020-05-06 02:41:06.115 +05:30 [INF] ----- Commit transaction "16e856d6-05bd-4bb9-8468-f9ad64c9842a" for GetPatientDocumentCommand
+2020-05-06 16:30:02.533 +05:30 [INF] Configuring web host (RegistrationService.API)...
+2020-05-06 16:30:03.359 +05:30 [INF] Starting web host (RegistrationService.API)...
+2020-05-06 16:30:03.621 +05:30 [WRN] Overriding address(es) 'http://localhost:5000'. Binding to endpoints defined in UseKestrel() instead.
+2020-05-06 16:30:25.038 +05:30 [WRN] 'AddEntityFramework*' was called on the service provider, but 'UseInternalServiceProvider' wasn't called in the DbContext options configuration. Remove the 'AddEntityFramework*' call as in most cases it's not needed and might cause conflicts with other products and services registered in the same service provider.
+2020-05-06 16:30:25.449 +05:30 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data, this mode should only be enabled during development.
+2020-05-06 16:30:42.130 +05:30 [INF] -----Sending command: GetPatientDocumentCommand
+2020-05-06 16:30:45.916 +05:30 [WRN] The messaging entity $Default Could not be found.
+2020-05-06 16:30:45.953 +05:30 [WRN] 'AddEntityFramework*' was called on the service provider, but 'UseInternalServiceProvider' wasn't called in the DbContext options configuration. Remove the 'AddEntityFramework*' call as in most cases it's not needed and might cause conflicts with other products and services registered in the same service provider.
+2020-05-06 16:30:47.960 +05:30 [INF] ----- Begin transaction "a68de9ef-fc55-469e-98f7-da8d659f279a" for GetPatientDocumentCommand ({"PatientVisitID":5,"ClientID":1,"$type":"GetPatientDocumentCommand"})
+2020-05-06 16:30:53.799 +05:30 [INF] ----- Commit transaction "a68de9ef-fc55-469e-98f7-da8d659f279a" for GetPatientDocumentCommand

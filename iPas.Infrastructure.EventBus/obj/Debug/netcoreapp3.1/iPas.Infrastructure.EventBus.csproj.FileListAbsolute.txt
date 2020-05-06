@@ -5,3 +5,12 @@ C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\i
 C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\iPas.Infrastructure.EventBus\bin\Debug\netcoreapp3.1\iPas.Infrastructure.EventBus.pdb
 C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\iPas.Infrastructure.EventBus\obj\Debug\netcoreapp3.1\iPas.Infrastructure.EventBus.dll
 C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\iPas.Infrastructure.EventBus\obj\Debug\netcoreapp3.1\iPas.Infrastructure.EventBus.pdb
+D:\ProjectsAndPOC\iPas.Infrastructure.EventBus\bin\Debug\netcoreapp3.1\iPas.Infrastructure.EventBus.deps.json
+D:\ProjectsAndPOC\iPas.Infrastructure.EventBus\bin\Debug\netcoreapp3.1\iPas.Infrastructure.EventBus.dll
+D:\ProjectsAndPOC\iPas.Infrastructure.EventBus\bin\Debug\netcoreapp3.1\iPas.Infrastructure.EventBus.pdb
+D:\ProjectsAndPOC\iPas.Infrastructure.EventBus\obj\Debug\netcoreapp3.1\iPas.Infrastructure.EventBus.csprojAssemblyReference.cache
+D:\ProjectsAndPOC\iPas.Infrastructure.EventBus\obj\Debug\netcoreapp3.1\iPas.Infrastructure.EventBus.csproj.CoreCompileInputs.cache
+D:\ProjectsAndPOC\iPas.Infrastructure.EventBus\obj\Debug\netcoreapp3.1\iPas.Infrastructure.EventBus.AssemblyInfoInputs.cache
+D:\ProjectsAndPOC\iPas.Infrastructure.EventBus\obj\Debug\netcoreapp3.1\iPas.Infrastructure.EventBus.AssemblyInfo.cs
+D:\ProjectsAndPOC\iPas.Infrastructure.EventBus\obj\Debug\netcoreapp3.1\iPas.Infrastructure.EventBus.dll
+D:\ProjectsAndPOC\iPas.Infrastructure.EventBus\obj\Debug\netcoreapp3.1\iPas.Infrastructure.EventBus.pdb
