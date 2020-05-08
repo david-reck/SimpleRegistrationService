@@ -37,6 +37,20 @@ namespace RegistrationService.API.Controllers
             return await _context.Patient.ToListAsync();
         }
 
+        [Route("GetPatientsDetailByID/{PatientVisitID:long}")]
+        [HttpGet]
+        public async Task<ActionResult<DocumentResult>> GetPatientsDetailByID(long PatientVisitID)
+        {
+
+            var Id = Convert.ToInt32(PatientVisitID);
+            var command = new GetPatientDocumentCommand(Id, 1);
+            _logger.LogInformation("-----Sending command: GetPatientDocumentCommand");
+
+            var result = await _mediatr.Send(command);
+
+            return Ok(result);
+        }
+
         [Route("registrationsafterlastupdate/{modifiedAfter:datetime}")]
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<RegistrationSummary>), (int)HttpStatusCode.OK)]
@@ -63,18 +77,18 @@ namespace RegistrationService.API.Controllers
 
         // GET: api/Registration/5
 
-        [HttpGet("{id}", Name = "Get")]
-        public async Task<ActionResult<Patient>> GetPatient(long id)
-        {
-            var patient = await _context.Patient.FindAsync(id);
+        //[HttpGet("{id}", Name = "Get")]
+        //public async Task<ActionResult<Patient>> GetPatient(long id)
+        //{
+        //    var patient = await _context.Patient.FindAsync(id);
 
-            if (patient == null)
-            {
-                return NotFound();
-            }
+        //    if (patient == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return patient;
-        }
+        //    return patient;
+        //}
 
 
 

@@ -14,10 +14,12 @@ namespace RegistrationService.API.Infrastructure.AutofacModules
             builder.RegisterAssemblyTypes(typeof(IMediator).GetTypeInfo().Assembly)
                 .AsImplementedInterfaces();
 
-            
             builder.RegisterAssemblyTypes(typeof(RegistrationCommand).GetTypeInfo().Assembly)
+
+            builder.RegisterAssemblyTypes(typeof(GetPatientDocumentCommand).GetTypeInfo().Assembly)
                 .AsClosedTypesOf(typeof(IRequestHandler<,>));
 
+            
             builder.RegisterAssemblyTypes(typeof(AddDocumentWhenPatientTransactionReceivedEventHandler).GetTypeInfo().Assembly)
                 .AsClosedTypesOf(typeof(INotificationHandler<>));
 
