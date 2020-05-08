@@ -1,32 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dreck\\source\\repos\\RegistrationService.Data\\SimpleRegistrationService\\RegistrationService.Data\\RegistrationService.Data.csproj": {}
+    "D:\\ProjectsAndPOC\\RegistrationService.Data\\RegistrationService.Data.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dreck\\source\\repos\\RegistrationService.Data\\SimpleRegistrationService\\RegistrationService.Data\\RegistrationService.Data.csproj": {
+    "D:\\ProjectsAndPOC\\RegistrationService.Data\\RegistrationService.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dreck\\source\\repos\\RegistrationService.Data\\SimpleRegistrationService\\RegistrationService.Data\\RegistrationService.Data.csproj",
+        "projectUniqueName": "D:\\ProjectsAndPOC\\RegistrationService.Data\\RegistrationService.Data.csproj",
         "projectName": "RegistrationService.Data",
-        "projectPath": "C:\\Users\\dreck\\source\\repos\\RegistrationService.Data\\SimpleRegistrationService\\RegistrationService.Data\\RegistrationService.Data.csproj",
-        "packagesPath": "C:\\Users\\dreck\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dreck\\source\\repos\\RegistrationService.Data\\SimpleRegistrationService\\RegistrationService.Data\\obj\\",
+        "projectPath": "D:\\ProjectsAndPOC\\RegistrationService.Data\\RegistrationService.Data.csproj",
+        "packagesPath": "C:\\Users\\skkar\\.nuget\\packages\\",
+        "outputPath": "D:\\ProjectsAndPOC\\RegistrationService.Data\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\dreck\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\ServiceFabricSDK.config"
+          "C:\\Users\\skkar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\Microsoft SDKs\\Service Fabric\\packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -88,7 +83,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
