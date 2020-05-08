@@ -1,4 +1,5 @@
 ﻿using RegistrationService.Data.Domain;
+using RegistrationService.Data.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,6 +9,7 @@ namespace RegistrationService.Data.Repositories
 {
     public interface IDocumentRepository
     {
-        Task<bool> Add(Patient patient, string message);
+        Task<bool> Add(Adt adt);
+
     }
 }

@@ -26,16 +26,10 @@ namespace RegistrationService.Data.Repositories
             _container = _cosmostClient.GetContainer(dbName, containerName);
         }
 
-        public async Task<bool> Add(Patient patient, string message)
+        public async Task<bool> Add(Adt adt)
         {
             var added = false;
-            RegistrationDTO registrationDTO = new RegistrationDTO();
-            registrationDTO.ADTMessage = message;
-            registrationDTO.PatientNumber = patient.PatientVisits[0].PatientNumber;
-            registrationDTO.ClientId = patient.ClientId;
-            registrationDTO.FacilityId = patient.FacilityId;
-            registrationDTO.id = patient.PatientVisits[0].PatientTransactions[0].DocumentId.ToString();
-            ItemResponse<RegistrationDTO> item = await _container.CreateItemAsync<RegistrationDTO>(registrationDTO, new PartitionKey(patient.ClientId));
+            ItemResponse<Adt> item = await _container.CreateItemAsync<Adt>(adt, new PartitionKey(adt.ClientId));
             if(item !=null)
             { added = true; }
             return added;

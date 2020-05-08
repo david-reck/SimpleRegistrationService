@@ -22,11 +22,11 @@ namespace RegistrationService.API.Application.DomainEventHandlers.PatientTransac
 
         public async Task Handle(PatientTransactionReceivedEvent notification, CancellationToken cancellationToken)
         {
-            await _documentRepository.Add(notification.patient, notification.registrationMessage);
+            await _documentRepository.Add(notification.registrationMessage);
 
             _logger.CreateLogger<AddDocumentWhenPatientTransactionReceivedEventHandler>()
                 .LogTrace("Patient Visit: {PatientVisitId} has successfully added PatientTransaction of Id{TransactionId}",
-                    notification.patient.PatientVisits[0].PatientVisitId, notification.patient.PatientVisits[0].PatientTransactions[0].DocumentId);
+                    notification.registrationMessage.PatientVisitId, notification.registrationMessage.id);
         }
     }
 }

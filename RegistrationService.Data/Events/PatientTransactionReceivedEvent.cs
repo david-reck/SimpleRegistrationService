@@ -1,17 +1,16 @@
 ﻿using MediatR;
 using RegistrationService.Data;
 using RegistrationService.Data.Domain;
+using RegistrationService.Data.DTOs;
 
 namespace RegistrationService.Data.Events
 {
     public class PatientTransactionReceivedEvent : INotification
     {
-        public Patient patient { get; }
-        public string registrationMessage { get; }
+        public Adt registrationMessage { get; }
 
-        public PatientTransactionReceivedEvent(Patient registeredPatient, string message)
+        public PatientTransactionReceivedEvent(Adt message)
         {
-            patient = registeredPatient;
             registrationMessage = message;
         }
     }

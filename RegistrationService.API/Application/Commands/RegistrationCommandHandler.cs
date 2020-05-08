@@ -1,27 +1,20 @@
 ﻿using RegistrationService.Data;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using MediatR;
 using System.Threading.Tasks;
-using Microsoft.Azure.ServiceBus;
 using Newtonsoft.Json;
 using RegistrationService.API.IntegrationEvents.Events;
 using RegistrationService.API.IntegrationEvents;
-using System.Xml;
-using System.Text.RegularExpressions;
-using Microsoft.Azure.Cosmos;
-using RegistrationService.API.DTORaw;
 using RegistrationService.Data.Domain;
 using RegistrationService.API.Grpc;
-using System.Linq;
 using RegistrationService.Data.Repositories;
 using RegistrationService.Data.Events;
 
 namespace RegistrationService.API.Application.Commands
 {
-    public class RegistrationWithMessageCommandHandler : IRequestHandler<RegistrationWithMessageCommand, bool>
+    public class RegistrationCommandHandler : IRequestHandler<RegistrationCommand, bool>
     {
         private readonly RegistrationContext _registrationContext;
         private readonly IMediator _mediator;
@@ -29,8 +22,8 @@ namespace RegistrationService.API.Application.Commands
         private IClientGRPCClientService _grpcClientService;
         private readonly IRegistrationRepository _registrationRepository;
 
-        public RegistrationWithMessageCommandHandler(RegistrationContext registrationContext,
-            IMediator mediator, 
+        public RegistrationCommandHandler(RegistrationContext registrationContext,
+            IMediator mediator,
             IRegistrationIntegrationEventService registrationIntegrationEventService,
             IClientGRPCClientService clientService, IRegistrationRepository registrationRepository)
         {
@@ -41,24 +34,24 @@ namespace RegistrationService.API.Application.Commands
             _registrationRepository = registrationRepository ?? throw new ArgumentNullException(nameof(registrationRepository));
         }
 
-        public async Task<bool> Handle(RegistrationWithMessageCommand message, CancellationToken cancellationToken)
+        public async Task<bool> Handle(RegistrationCommand message, CancellationToken cancellationToken)
         {
             bool saved = false;
             Guid id = Guid.NewGuid();
-            Int64 facilityId = await _grpcClientService.ClientFacilitySubscribesToModule(message.ClientId, message.FacilityCode);
+            Int64 facilityId = await _grpcClientService.ClientFacilitySubscribesToModule(message.ClientId, message.adt.content.MSH.sendingFacility.namespaceId);
 
             var patientTransaction = new List<PatientTransaction>();
             patientTransaction.Add(new PatientTransaction { DocumentId = id });
 
-            var patient = _registrationRepository.FindPatientAndPatientVisit(message.MedicalRecordNumber, message.PatientNumber);
-            if(patient == null)
+            var patient = _registrationRepository.FindPatientAndPatientVisit(message.adt.content.PID[0].internalId[0].id, message.adt.content.PID[0].patientAccountNumber.id);
+            if (patient == null)
             {
-                patient = new Patient { ClientId = message.ClientId, FacilityId = facilityId, MedicalRecordNumber = message.MedicalRecordNumber };
-            }            
+                patient = new Patient { ClientId = message.ClientId, FacilityId = facilityId, MedicalRecordNumber = message.adt.content.PID[0].internalId[0].id};
+            }
             if (patient.PatientVisits.Count == 0)
             {
                 var patientVist = new List<PatientVisit>();
-                patientVist.Add(new PatientVisit { PatientNumber = message.PatientNumber, PatientTransactions = patientTransaction});
+                patientVist.Add(new PatientVisit { PatientNumber = message.adt.content.PID[0].patientAccountNumber.id, PatientTransactions = patientTransaction });
                 patient.PatientVisits = patientVist;
             }
             else
@@ -70,22 +63,23 @@ namespace RegistrationService.API.Application.Commands
             { _registrationContext.Add(patient); }
             else
             { _registrationContext.Update(patient); }
+            saved = await _registrationContext.SaveEntitiesAsync(cancellationToken);
 
-            var xmldoc = new XmlDocument();
-            xmldoc.LoadXml(message.ADTMessage);
-
-            var jsonString = JsonConvert.SerializeXmlNode(xmldoc);
-            Hl7Adt hl7Adt = JsonConvert.DeserializeObject<Hl7Adt>(jsonString);
-
+            message.adt.ClientId = message.ClientId;
+            message.adt.FacilityId = facilityId;
+            message.adt.PatientId = patient.PatientId;
+            message.adt.PatientVisitId = patient.PatientVisits[0].PatientVisitId;
+            message.adt.PatientTransactionId = patient.PatientVisits[0].PatientTransactions[0].PatientTransactionId;
+            message.adt.id = patient.PatientVisits[0].PatientTransactions[0].DocumentId.ToString();
             var registrationReceivedEvent = new RegistrationReceivedIntegrationEvent(patient.ClientId, patient.FacilityId, patient.PatientId,
                 patient.PatientVisits[0].PatientVisitId, patient.PatientVisits[0].PatientTransactions[0].DocumentId.ToString());
             await _registrationIntegrationEventService.AddAndSaveEventAsync(registrationReceivedEvent);
 
 
-            saved =  await _registrationContext.SaveEntitiesAsync(cancellationToken);
-            await _mediator.Publish(new PatientTransactionReceivedEvent(patient, jsonString));
             
-            
+            await _mediator.Publish(new PatientTransactionReceivedEvent(message.adt));
+
+
             return saved;
         }
     }

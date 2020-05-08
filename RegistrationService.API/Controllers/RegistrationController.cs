@@ -76,13 +76,15 @@ namespace RegistrationService.API.Controllers
             return patient;
         }
 
-        [Route("RegistrationWithMessage")]
+
+
+        [Route("Registration")]
         [HttpPost]
-        public async Task<ActionResult<bool>> RegistrationExtended([FromBody] RegistrationDTO dto)
+        public async Task<ActionResult<bool>> Registration([FromBody] Adt dto)
         {
             bool commandResult = false;
 
-            var command = new RegistrationWithMessageCommand(dto.ClientId, dto.FacilityCode, dto.MedicalRecordNumber, dto.PatientNumber, dto.ADTMessage);
+            var command = new RegistrationCommand(Convert.ToInt64(dto.content.MSH.sendingApplication.universalId), dto);
             _logger.LogInformation("-----Sending command: RegistrationCommand");
 
             commandResult = await _mediatr.Send(command);

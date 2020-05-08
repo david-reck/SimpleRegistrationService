@@ -15,7 +15,7 @@ namespace RegistrationService.API.Infrastructure.AutofacModules
                 .AsImplementedInterfaces();
 
             
-            builder.RegisterAssemblyTypes(typeof(RegistrationWithMessageCommand).GetTypeInfo().Assembly)
+            builder.RegisterAssemblyTypes(typeof(RegistrationCommand).GetTypeInfo().Assembly)
                 .AsClosedTypesOf(typeof(IRequestHandler<,>));
 
             builder.RegisterAssemblyTypes(typeof(AddDocumentWhenPatientTransactionReceivedEventHandler).GetTypeInfo().Assembly)

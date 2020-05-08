@@ -2,6 +2,7 @@
 using Microsoft.Azure.Cosmos;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using RegistrationService.API.IntegrationEvents;
 using RegistrationService.Data.DTOs;
 using System;
@@ -28,11 +29,11 @@ namespace RegistrationService.API.Grpc
 
         public  override async Task<AdtMessageResponse> FindAdtMessageById(AdtMessageRequest request, ServerCallContext context)
         {
-            ItemResponse<RegistrationDTO> registration =  await _container.ReadItemAsync<RegistrationDTO>(request.Id, new PartitionKey(request.ClientId));
+            ItemResponse<Adt> registration =  await _container.ReadItemAsync<Adt>(request.Id, new PartitionKey(request.ClientId));
             
             if (registration != null)
             {
-                return new AdtMessageResponse { AdtMessage = registration.Resource.ADTMessage };
+                return new AdtMessageResponse { AdtMessage = JsonConvert.SerializeObject(registration) };
             }
 
             context.Status = new Status(StatusCode.NotFound, $"Document with id {request.Id} does not exist");
@@ -41,16 +42,11 @@ namespace RegistrationService.API.Grpc
 
         public override async Task<SearchAPIAdtMessageResponse> SearchAPIFindAdtMessageById(SearchAPIAdtMessageRequest request, ServerCallContext context)
         {
-
-            ItemResponse<RegistrationDTO> registration = await _container.ReadItemAsync<RegistrationDTO>(request.Id, new PartitionKey(request.ClientId));
-
+            ItemResponse<Adt> registration = await _container.ReadItemAsync<Adt>(request.Id, new PartitionKey(request.ClientId));
             if (registration != null)
             {
-                Console.WriteLine(registration.Resource.ADTMessage);
-                return new SearchAPIAdtMessageResponse { AdtMessage = registration.Resource.ADTMessage };
+                return new SearchAPIAdtMessageResponse { AdtMessage = JsonConvert.SerializeObject(registration) };
             }
-
-
 
             context.Status = new Status(StatusCode.NotFound, $"Document with id {request.Id} does not exist");
             return null;

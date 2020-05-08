@@ -10,3 +10,6 @@
 2020-05-05 07:29:36.492 -05:00 [INF] ----- Enqueuing integration event "d7f4dec6-c053-4eea-951b-9264cf3f4035" to repository ({"ClientId":1,"FacilityId":1,"PatientId":1,"PatientVisitId":2,"DocumentId":"8f6f04ad-e4d7-4526-94a9-3c58d70d772d","Id":"d7f4dec6-c053-4eea-951b-9264cf3f4035","CreationDate":"2020-05-05T12:29:36.4897508Z","$type":"RegistrationReceivedIntegrationEvent"})
 2020-05-05 07:29:39.734 -05:00 [INF] ----- Commit transaction "52c47ce9-751a-4133-9ae2-1bc9bd997ed2" for RegistrationWithMessageCommand
 2020-05-05 07:29:39.966 -05:00 [INF] ----- Publishing integration event: "d7f4dec6-c053-4eea-951b-9264cf3f4035" from RegistrationService.API - ({"ClientId":1,"FacilityId":1,"PatientId":1,"PatientVisitId":2,"DocumentId":"8f6f04ad-e4d7-4526-94a9-3c58d70d772d","Id":"d7f4dec6-c053-4eea-951b-9264cf3f4035","CreationDate":"2020-05-05T12:29:36.4897508Z","$type":"RegistrationReceivedIntegrationEvent"})
+2020-05-05 21:16:11.807 -05:00 [INF] Configuring web host (RegistrationService.API)...
+2020-05-05 21:16:12.663 -05:00 [INF] Starting web host (RegistrationService.API)...
+2020-05-05 21:16:12.913 -05:00 [WRN] Overriding address(es) 'http://localhost:5000'. Binding to endpoints defined in UseKestrel() instead.

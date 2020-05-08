@@ -14,14 +14,10 @@ namespace RegistrationService.Data.DTOs
             public string id { get; set; }
             public Int64 ClientId { get; set; }
 
-            public Int64 FacilityId { get; set; }
-
-            public string FacilityCode { get; set; }
-            public string MedicalRecordNumber { get; set; }
-
-            public string PatientNumber { get; set; }
-
-            public string ADTMessage { get; set; }
+            public Int64 PatientId { get; set; }
+            public Int64 PatientVisitId { get; set; }
+            public Int64 PatientTransactionId { get; set; }
+        public string ADTMessage { get; set; }
 
 
         }
