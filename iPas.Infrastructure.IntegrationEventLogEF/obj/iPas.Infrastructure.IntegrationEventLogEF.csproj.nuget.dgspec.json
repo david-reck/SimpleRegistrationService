@@ -1,27 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "D:\\ProjectsAndPOC\\iPas.Infrastructure.IntegrationEventLogEF\\iPas.Infrastructure.IntegrationEventLogEF.csproj": {}
+    "C:\\Users\\dreck\\source\\repos\\RegistrationService.Data\\SimpleRegistrationService\\iPas.Infrastructure.IntegrationEventLogEF\\iPas.Infrastructure.IntegrationEventLogEF.csproj": {}
   },
   "projects": {
-    "D:\\ProjectsAndPOC\\iPas.Infrastructure.EventBus\\iPas.Infrastructure.EventBus.csproj": {
+    "C:\\Users\\dreck\\source\\repos\\RegistrationService.Data\\SimpleRegistrationService\\iPas.Infrastructure.EventBus\\iPas.Infrastructure.EventBus.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ProjectsAndPOC\\iPas.Infrastructure.EventBus\\iPas.Infrastructure.EventBus.csproj",
+        "projectUniqueName": "C:\\Users\\dreck\\source\\repos\\RegistrationService.Data\\SimpleRegistrationService\\iPas.Infrastructure.EventBus\\iPas.Infrastructure.EventBus.csproj",
         "projectName": "iPas.Infrastructure.EventBus",
-        "projectPath": "D:\\ProjectsAndPOC\\iPas.Infrastructure.EventBus\\iPas.Infrastructure.EventBus.csproj",
-        "packagesPath": "C:\\Users\\skkar\\.nuget\\packages\\",
-        "outputPath": "D:\\ProjectsAndPOC\\iPas.Infrastructure.EventBus\\obj\\",
+        "projectPath": "C:\\Users\\dreck\\source\\repos\\RegistrationService.Data\\SimpleRegistrationService\\iPas.Infrastructure.EventBus\\iPas.Infrastructure.EventBus.csproj",
+        "packagesPath": "C:\\Users\\dreck\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dreck\\source\\repos\\RegistrationService.Data\\SimpleRegistrationService\\iPas.Infrastructure.EventBus\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\skkar\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\dreck\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\ServiceFabricSDK.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\Microsoft SDKs\\Service Fabric\\packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -58,35 +63,40 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\ProjectsAndPOC\\iPas.Infrastructure.IntegrationEventLogEF\\iPas.Infrastructure.IntegrationEventLogEF.csproj": {
+    "C:\\Users\\dreck\\source\\repos\\RegistrationService.Data\\SimpleRegistrationService\\iPas.Infrastructure.IntegrationEventLogEF\\iPas.Infrastructure.IntegrationEventLogEF.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ProjectsAndPOC\\iPas.Infrastructure.IntegrationEventLogEF\\iPas.Infrastructure.IntegrationEventLogEF.csproj",
+        "projectUniqueName": "C:\\Users\\dreck\\source\\repos\\RegistrationService.Data\\SimpleRegistrationService\\iPas.Infrastructure.IntegrationEventLogEF\\iPas.Infrastructure.IntegrationEventLogEF.csproj",
         "projectName": "iPas.Infrastructure.IntegrationEventLogEF",
-        "projectPath": "D:\\ProjectsAndPOC\\iPas.Infrastructure.IntegrationEventLogEF\\iPas.Infrastructure.IntegrationEventLogEF.csproj",
-        "packagesPath": "C:\\Users\\skkar\\.nuget\\packages\\",
-        "outputPath": "D:\\ProjectsAndPOC\\iPas.Infrastructure.IntegrationEventLogEF\\obj\\",
+        "projectPath": "C:\\Users\\dreck\\source\\repos\\RegistrationService.Data\\SimpleRegistrationService\\iPas.Infrastructure.IntegrationEventLogEF\\iPas.Infrastructure.IntegrationEventLogEF.csproj",
+        "packagesPath": "C:\\Users\\dreck\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dreck\\source\\repos\\RegistrationService.Data\\SimpleRegistrationService\\iPas.Infrastructure.IntegrationEventLogEF\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\skkar\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\dreck\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\ServiceFabricSDK.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\Microsoft SDKs\\Service Fabric\\packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "D:\\ProjectsAndPOC\\iPas.Infrastructure.EventBus\\iPas.Infrastructure.EventBus.csproj": {
-                "projectPath": "D:\\ProjectsAndPOC\\iPas.Infrastructure.EventBus\\iPas.Infrastructure.EventBus.csproj"
+              "C:\\Users\\dreck\\source\\repos\\RegistrationService.Data\\SimpleRegistrationService\\iPas.Infrastructure.EventBus\\iPas.Infrastructure.EventBus.csproj": {
+                "projectPath": "C:\\Users\\dreck\\source\\repos\\RegistrationService.Data\\SimpleRegistrationService\\iPas.Infrastructure.EventBus\\iPas.Infrastructure.EventBus.csproj"
               }
             }
           }
@@ -138,7 +148,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -33,7 +33,7 @@ namespace RegistrationService.API.Grpc
             
             if (registration != null)
             {
-                return new AdtMessageResponse { AdtMessage = JsonConvert.SerializeObject(registration) };
+                return new AdtMessageResponse { AdtMessage = JsonConvert.SerializeObject(registration.Resource) };
             }
 
             context.Status = new Status(StatusCode.NotFound, $"Document with id {request.Id} does not exist");
@@ -45,7 +45,7 @@ namespace RegistrationService.API.Grpc
             ItemResponse<Adt> registration = await _container.ReadItemAsync<Adt>(request.Id, new PartitionKey(request.ClientId));
             if (registration != null)
             {
-                return new SearchAPIAdtMessageResponse { AdtMessage = JsonConvert.SerializeObject(registration) };
+                return new SearchAPIAdtMessageResponse { AdtMessage = JsonConvert.SerializeObject(registration.Resource) };
             }
 
             context.Status = new Status(StatusCode.NotFound, $"Document with id {request.Id} does not exist");

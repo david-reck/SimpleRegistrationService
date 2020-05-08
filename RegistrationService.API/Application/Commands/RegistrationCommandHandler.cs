@@ -43,7 +43,7 @@ namespace RegistrationService.API.Application.Commands
             var patientTransaction = new List<PatientTransaction>();
             patientTransaction.Add(new PatientTransaction { DocumentId = id });
 
-            var patient = _registrationRepository.FindPatientAndPatientVisit(message.adt.content.PID[0].internalId[0].id, message.adt.content.PID[0].patientAccountNumber.id);
+            var patient = _registrationRepository.FindPatientAndPatientVisit(message.adt.content.PID[0].internalId[0].id,message.adt.content.PID[0].patientAccountNumber.id);
             if (patient == null)
             {
                 patient = new Patient { ClientId = message.ClientId, FacilityId = facilityId, MedicalRecordNumber = message.adt.content.PID[0].internalId[0].id};
