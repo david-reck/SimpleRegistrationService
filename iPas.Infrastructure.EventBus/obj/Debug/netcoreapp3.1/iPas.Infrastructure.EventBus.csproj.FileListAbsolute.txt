@@ -14,3 +14,4 @@ D:\ProjectsAndPOC\iPas.Infrastructure.EventBus\obj\Debug\netcoreapp3.1\iPas.Infr
 D:\ProjectsAndPOC\iPas.Infrastructure.EventBus\obj\Debug\netcoreapp3.1\iPas.Infrastructure.EventBus.AssemblyInfo.cs
 D:\ProjectsAndPOC\iPas.Infrastructure.EventBus\obj\Debug\netcoreapp3.1\iPas.Infrastructure.EventBus.dll
 D:\ProjectsAndPOC\iPas.Infrastructure.EventBus\obj\Debug\netcoreapp3.1\iPas.Infrastructure.EventBus.pdb
+C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\iPas.Infrastructure.EventBus\obj\Debug\netcoreapp3.1\iPas.Infrastructure.EventBus.csprojAssemblyReference.cache

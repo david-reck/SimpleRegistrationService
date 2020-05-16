@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: registration-service-deployment
+spec:
+  selector:
+    matchLabels:
+      app: registration-service-pod
+  template:
+    metadata:
+      labels:
+        app: registration-service-pod
+    spec:
+      containers:
+      - name: registration-service-container
+        image: ipaspoccontreg.azurecr.io/registrationserviceapi:dev
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
