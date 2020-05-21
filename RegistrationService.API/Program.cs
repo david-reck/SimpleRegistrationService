@@ -54,7 +54,7 @@ namespace RegistrationService.API
                     listenOptions.Protocols = HttpProtocols.Http1AndHttp2;
                 });
 
-                options.Listen(address /*IPAddress.Any*/, ports.grpcPort, listenOptions =>
+                options.Listen(IPAddress.Any, ports.grpcPort, listenOptions =>
                 {
                     listenOptions.Protocols = HttpProtocols.Http2;
                 });
@@ -92,8 +92,8 @@ namespace RegistrationService.API
     }
     private static (int httpPort, int grpcPort) GetDefinedPorts(IConfiguration config)
     {
-        var grpcPort = config.GetValue("GRPC_PORT", 5021);
-        var port = config.GetValue("PORT", 80);
+        var grpcPort = config.GetValue("GRPC_PORT", 30021);
+        var port = config.GetValue("PORT", 30001);
         return (port, grpcPort);
     }
 }

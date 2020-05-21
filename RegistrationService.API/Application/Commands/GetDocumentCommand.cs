@@ -4,7 +4,7 @@ using System;
 
 namespace RegistrationService.API.Application.Commands
 {
-    public class GetPatientDocumentCommand : IRequest<DocumentResult>
+    public class GetPatientDocumentCommand : IRequest<PatientResultByVisitID>
     {
         public GetPatientDocumentCommand(int _patientVisitID, Int64 _clientID)
         {

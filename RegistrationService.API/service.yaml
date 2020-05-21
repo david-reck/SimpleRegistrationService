@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: registrationserviceapi-service
+spec:
+  selector:
+    app: registrationserviceapi-pod
+  ports:
+  - port: 30021
+    name: grpc
+    nodePort: 30021
+    targetPort: 30021
+  - port: 30001
+    name: http
+    nodePort: 30001
+    targetPort: 30001
+  type: LoadBalancer

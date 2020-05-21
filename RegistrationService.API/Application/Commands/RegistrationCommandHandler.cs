@@ -11,6 +11,7 @@ using RegistrationService.Data.Domain;
 using RegistrationService.API.Grpc;
 using RegistrationService.Data.Repositories;
 using RegistrationService.Data.Events;
+using RegistrationService.Data.DTOs;
 
 namespace RegistrationService.API.Application.Commands
 {
@@ -38,7 +39,7 @@ namespace RegistrationService.API.Application.Commands
         {
             bool saved = false;
             Guid id = Guid.NewGuid();
-            Int64 facilityId = await _grpcClientService.ClientFacilitySubscribesToModule(message.ClientId, message.adt.content.MSH.sendingFacility.namespaceId);
+            ClientFacilityDetail facilityDetails = await _grpcClientService.ClientFacilitySubscribesToModule(message.ClientId, message.adt.content.MSH.sendingFacility.namespaceId);
 
             var patientTransaction = new List<PatientTransaction>();
             patientTransaction.Add(new PatientTransaction { DocumentId = id });
@@ -46,7 +47,7 @@ namespace RegistrationService.API.Application.Commands
             var patient = _registrationRepository.FindPatientAndPatientVisit(message.adt.content.PID[0].internalId[0].id,message.adt.content.PID[0].patientAccountNumber.id);
             if (patient == null)
             {
-                patient = new Patient { ClientId = message.ClientId, FacilityId = facilityId, MedicalRecordNumber = message.adt.content.PID[0].internalId[0].id};
+                patient = new Patient { ClientId = message.ClientId, FacilityId = facilityDetails.FacilityId, MedicalRecordNumber = message.adt.content.PID[0].internalId[0].id};
             }
             if (patient.PatientVisits.Count == 0)
             {
@@ -66,13 +67,13 @@ namespace RegistrationService.API.Application.Commands
             saved = await _registrationContext.SaveEntitiesAsync(cancellationToken);
 
             message.adt.ClientId = message.ClientId;
-            message.adt.FacilityId = facilityId;
+            message.adt.FacilityId = facilityDetails.FacilityId;
             message.adt.PatientId = patient.PatientId;
             message.adt.PatientVisitId = patient.PatientVisits[0].PatientVisitId;
             message.adt.PatientTransactionId = patient.PatientVisits[0].PatientTransactions[0].PatientTransactionId;
             message.adt.id = patient.PatientVisits[0].PatientTransactions[0].DocumentId.ToString();
             var registrationReceivedEvent = new RegistrationReceivedIntegrationEvent(patient.ClientId, patient.FacilityId, patient.PatientId,
-                patient.PatientVisits[0].PatientVisitId, patient.PatientVisits[0].PatientTransactions[0].DocumentId.ToString());
+                patient.PatientVisits[0].PatientVisitId, patient.PatientVisits[0].PatientTransactions[0].DocumentId.ToString(), facilityDetails.ClientName);
             await _registrationIntegrationEventService.AddAndSaveEventAsync(registrationReceivedEvent);
 
 
