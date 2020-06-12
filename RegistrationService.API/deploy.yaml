@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: registrationserviceapi-container
-        image: ipascontreg.azurecr.io/registrationserviceapi:v5
+        image: ipascontreg.azurecr.io/registrationserviceapi:v11
         resources:
           limits:
             memory: "128Mi"
