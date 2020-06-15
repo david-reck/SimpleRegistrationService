@@ -4,14 +4,14 @@
     "C:\\Users\\dreck\\source\\repos\\RegistrationService.Data\\SimpleRegistrationService\\RegistrationService.API\\RegistrationService.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dreck\\source\\repos\\RegistrationService.Data\\iPas.Infrastructure.EventBusRabbitMQ\\iPas.Infrastructure.EventBusRabbitMQ.csproj": {
+    "C:\\Users\\dreck\\source\\repos\\RegistrationService.Data\\SimpleRegistrationService\\iPas.Infrastructure.EventBusRabbitMQ\\iPas.Infrastructure.EventBusRabbitMQ.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dreck\\source\\repos\\RegistrationService.Data\\iPas.Infrastructure.EventBusRabbitMQ\\iPas.Infrastructure.EventBusRabbitMQ.csproj",
+        "projectUniqueName": "C:\\Users\\dreck\\source\\repos\\RegistrationService.Data\\SimpleRegistrationService\\iPas.Infrastructure.EventBusRabbitMQ\\iPas.Infrastructure.EventBusRabbitMQ.csproj",
         "projectName": "iPas.Infrastructure.EventBusRabbitMQ",
-        "projectPath": "C:\\Users\\dreck\\source\\repos\\RegistrationService.Data\\iPas.Infrastructure.EventBusRabbitMQ\\iPas.Infrastructure.EventBusRabbitMQ.csproj",
+        "projectPath": "C:\\Users\\dreck\\source\\repos\\RegistrationService.Data\\SimpleRegistrationService\\iPas.Infrastructure.EventBusRabbitMQ\\iPas.Infrastructure.EventBusRabbitMQ.csproj",
         "packagesPath": "C:\\Users\\dreck\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dreck\\source\\repos\\RegistrationService.Data\\iPas.Infrastructure.EventBusRabbitMQ\\obj\\",
+        "outputPath": "C:\\Users\\dreck\\source\\repos\\RegistrationService.Data\\SimpleRegistrationService\\iPas.Infrastructure.EventBusRabbitMQ\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -350,8 +350,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\dreck\\source\\repos\\RegistrationService.Data\\iPas.Infrastructure.EventBusRabbitMQ\\iPas.Infrastructure.EventBusRabbitMQ.csproj": {
-                "projectPath": "C:\\Users\\dreck\\source\\repos\\RegistrationService.Data\\iPas.Infrastructure.EventBusRabbitMQ\\iPas.Infrastructure.EventBusRabbitMQ.csproj"
+              "C:\\Users\\dreck\\source\\repos\\RegistrationService.Data\\SimpleRegistrationService\\iPas.Infrastructure.EventBusRabbitMQ\\iPas.Infrastructure.EventBusRabbitMQ.csproj": {
+                "projectPath": "C:\\Users\\dreck\\source\\repos\\RegistrationService.Data\\SimpleRegistrationService\\iPas.Infrastructure.EventBusRabbitMQ\\iPas.Infrastructure.EventBusRabbitMQ.csproj"
               },
               "C:\\Users\\dreck\\source\\repos\\RegistrationService.Data\\SimpleRegistrationService\\iPas.Infrastructure.EventBusServiceBus\\iPas.Infrastructure.EventBusServiceBus.csproj": {
                 "projectPath": "C:\\Users\\dreck\\source\\repos\\RegistrationService.Data\\SimpleRegistrationService\\iPas.Infrastructure.EventBusServiceBus\\iPas.Infrastructure.EventBusServiceBus.csproj"

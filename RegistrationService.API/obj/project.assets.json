@@ -9740,8 +9740,8 @@
     },
     "iPas.Infrastructure.EventBusRabbitMQ/1.0.0": {
       "type": "project",
-      "path": "../../iPas.Infrastructure.EventBusRabbitMQ/iPas.Infrastructure.EventBusRabbitMQ.csproj",
-      "msbuildProject": "../../iPas.Infrastructure.EventBusRabbitMQ/iPas.Infrastructure.EventBusRabbitMQ.csproj"
+      "path": "../iPas.Infrastructure.EventBusRabbitMQ/iPas.Infrastructure.EventBusRabbitMQ.csproj",
+      "msbuildProject": "../iPas.Infrastructure.EventBusRabbitMQ/iPas.Infrastructure.EventBusRabbitMQ.csproj"
     },
     "iPas.Infrastructure.EventBusServiceBus/1.0.0": {
       "type": "project",
@@ -9819,8 +9819,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\dreck\\source\\repos\\RegistrationService.Data\\iPas.Infrastructure.EventBusRabbitMQ\\iPas.Infrastructure.EventBusRabbitMQ.csproj": {
-              "projectPath": "C:\\Users\\dreck\\source\\repos\\RegistrationService.Data\\iPas.Infrastructure.EventBusRabbitMQ\\iPas.Infrastructure.EventBusRabbitMQ.csproj"
+            "C:\\Users\\dreck\\source\\repos\\RegistrationService.Data\\SimpleRegistrationService\\iPas.Infrastructure.EventBusRabbitMQ\\iPas.Infrastructure.EventBusRabbitMQ.csproj": {
+              "projectPath": "C:\\Users\\dreck\\source\\repos\\RegistrationService.Data\\SimpleRegistrationService\\iPas.Infrastructure.EventBusRabbitMQ\\iPas.Infrastructure.EventBusRabbitMQ.csproj"
             },
             "C:\\Users\\dreck\\source\\repos\\RegistrationService.Data\\SimpleRegistrationService\\iPas.Infrastructure.EventBusServiceBus\\iPas.Infrastructure.EventBusServiceBus.csproj": {
               "projectPath": "C:\\Users\\dreck\\source\\repos\\RegistrationService.Data\\SimpleRegistrationService\\iPas.Infrastructure.EventBusServiceBus\\iPas.Infrastructure.EventBusServiceBus.csproj"

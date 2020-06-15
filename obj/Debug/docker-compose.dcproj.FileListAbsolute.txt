@@ -39,10 +39,8 @@ C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\b
 C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\bin\Debug\Microsoft.Data.SqlClient.dll
 C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\bin\Debug\Microsoft.EntityFrameworkCore.Abstractions.dll
-C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
 C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\bin\Debug\Microsoft.Bcl.HashCode.dll
 C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\bin\Debug\Microsoft.Extensions.Caching.Abstractions.dll
-C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\bin\Debug\Microsoft.Extensions.Logging.dll
 C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\bin\Debug\Microsoft.Extensions.Caching.Memory.dll
 C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\bin\Debug\Microsoft.Azure.Amqp.dll
 C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\bin\Debug\Microsoft.Azure.Services.AppAuthentication.dll
@@ -70,3 +68,8 @@ C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\b
 C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\bin\Debug\RegistrationService.Data.pdb
 C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\obj\Debug\docker-compose.dcprojAssemblyReference.cache
 C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\obj\Debug\docker-compose.dcproj.CopyComplete
+C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\bin\Debug\iPas.Infrastructure.EventBusRabbitMQ.dll
+C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\bin\Debug\RabbitMQ.Client.dll
+C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\bin\Debug\Polly.dll
+C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\bin\Debug\System.Threading.Channels.dll
+C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\bin\Debug\iPas.Infrastructure.EventBusRabbitMQ.pdb

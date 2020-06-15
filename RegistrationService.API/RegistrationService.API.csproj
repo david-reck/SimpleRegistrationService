@@ -34,7 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\iPas.Infrastructure.EventBusRabbitMQ\iPas.Infrastructure.EventBusRabbitMQ.csproj" />
+    <ProjectReference Include="..\iPas.Infrastructure.EventBusRabbitMQ\iPas.Infrastructure.EventBusRabbitMQ.csproj" />
     <ProjectReference Include="..\iPas.Infrastructure.EventBusServiceBus\iPas.Infrastructure.EventBusServiceBus.csproj" />
     <ProjectReference Include="..\iPas.Infrastructure.EventBus\iPas.Infrastructure.EventBus.csproj" />
     <ProjectReference Include="..\iPas.Infrastructure.IntegrationEventLogEF\iPas.Infrastructure.IntegrationEventLogEF.csproj" />
