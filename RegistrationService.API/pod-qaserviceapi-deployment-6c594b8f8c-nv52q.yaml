@@ -1,0 +1,101 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: "2020-05-22T21:48:44Z"
+  generateName: qaserviceapi-deployment-6c594b8f8c-
+  labels:
+    app: qaserviceapi-pod
+    pod-template-hash: 6c594b8f8c
+  name: qaserviceapi-deployment-6c594b8f8c-nv52q
+  namespace: default
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: qaserviceapi-deployment-6c594b8f8c
+    uid: 3a9e730c-6413-4f9d-b6c2-3668286ff491
+  resourceVersion: "394604"
+  selfLink: /api/v1/namespaces/default/pods/qaserviceapi-deployment-6c594b8f8c-nv52q
+  uid: c1798787-c557-41af-bf43-77a18654673c
+spec:
+  containers:
+  - image: ipascontreg.azurecr.io/qaserviceapi:v6
+    imagePullPolicy: IfNotPresent
+    name: qaserviceapi-container
+    ports:
+    - containerPort: 30003
+      protocol: TCP
+    - containerPort: 30023
+      protocol: TCP
+    resources:
+      limits:
+        cpu: 500m
+        memory: 128Mi
+      requests:
+        cpu: 500m
+        memory: 128Mi
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: default-token-mk8zq
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: aks-agentpool-25481662-vmss000000
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: default-token-mk8zq
+    secret:
+      defaultMode: 420
+      secretName: default-token-mk8zq
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2020-05-22T21:48:46Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2020-05-22T21:48:48Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2020-05-22T21:48:48Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2020-05-22T21:48:46Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: docker://1319f72b8875ed6fdf361e4f72b5528a9ff6b7a8806523aa73eee6f21978aec4
+    image: ipascontreg.azurecr.io/qaserviceapi:v4
+    imageID: docker-pullable://ipascontreg.azurecr.io/qaserviceapi@sha256:2bd5dd5cf9af7dd37eced7e0ffd549c704e0baac2cba8e358332b0ac45f04a23
+    lastState: {}
+    name: qaserviceapi-container
+    ready: true
+    restartCount: 0
+    state:
+      running:
+        startedAt: "2020-05-22T21:48:47Z"
+  hostIP: 10.240.0.4
+  phase: Running
+  podIP: 10.244.0.36
+  qosClass: Guaranteed
+  startTime: "2020-05-22T21:48:46Z"

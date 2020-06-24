@@ -1,0 +1,18 @@
+{
+    "PatientId": 123,
+    "BirthDate": "05/14/1972",
+    "FirstName": "David",
+    "MiddleName": "Joseph",
+    "LastName": "Reck",
+    "PatientAddresses": [
+      {
+        "PatientAddressId": 101,
+        "StreetAddress": "1005 Abby Lane",
+        "StreetAddress2": "",
+        "City": "Lucas",
+        "State": "TX",
+        "ZipCode": "75002",
+        "PatientId": 123
+      }
+    ]
+}

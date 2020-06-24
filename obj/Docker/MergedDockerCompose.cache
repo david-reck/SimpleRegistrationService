@@ -1,0 +1,22 @@
+networks:
+  ipasnetwork:
+    external:
+      name: ipasnetwork
+services:
+  registrationservice.api:
+    build:
+      context: C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService
+      dockerfile: RegistrationService.API/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    hostname: registrationservice.api
+    image: registrationserviceapi
+    networks:
+      ipasnetwork: {}
+    ports:
+    - target: 80
+    - published: 30001
+      target: 30001
+    - published: 30021
+      target: 30021
+version: '3.4'

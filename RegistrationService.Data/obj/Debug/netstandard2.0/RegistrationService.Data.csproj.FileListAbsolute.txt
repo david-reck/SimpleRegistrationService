@@ -1,0 +1,17 @@
+C:\Users\dreck\source\repos\RegistrationService.Data\RegistrationService.Data\bin\Debug\netstandard2.0\RegistrationService.Data.deps.json
+C:\Users\dreck\source\repos\RegistrationService.Data\RegistrationService.Data\bin\Debug\netstandard2.0\RegistrationService.Data.dll
+C:\Users\dreck\source\repos\RegistrationService.Data\RegistrationService.Data\bin\Debug\netstandard2.0\RegistrationService.Data.pdb
+C:\Users\dreck\source\repos\RegistrationService.Data\RegistrationService.Data\obj\Debug\netstandard2.0\RegistrationService.Data.AssemblyInfoInputs.cache
+C:\Users\dreck\source\repos\RegistrationService.Data\RegistrationService.Data\obj\Debug\netstandard2.0\RegistrationService.Data.AssemblyInfo.cs
+C:\Users\dreck\source\repos\RegistrationService.Data\RegistrationService.Data\obj\Debug\netstandard2.0\RegistrationService.Data.dll
+C:\Users\dreck\source\repos\RegistrationService.Data\RegistrationService.Data\obj\Debug\netstandard2.0\RegistrationService.Data.pdb
+C:\Users\dreck\source\repos\RegistrationService.Data\RegistrationService.Data\obj\Debug\netstandard2.0\RegistrationService.Data.csprojAssemblyReference.cache
+C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\RegistrationService.Data\bin\Debug\netstandard2.0\RegistrationService.Data.deps.json
+C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\RegistrationService.Data\bin\Debug\netstandard2.0\RegistrationService.Data.dll
+C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\RegistrationService.Data\bin\Debug\netstandard2.0\RegistrationService.Data.pdb
+C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\RegistrationService.Data\obj\Debug\netstandard2.0\RegistrationService.Data.AssemblyInfoInputs.cache
+C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\RegistrationService.Data\obj\Debug\netstandard2.0\RegistrationService.Data.AssemblyInfo.cs
+C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\RegistrationService.Data\obj\Debug\netstandard2.0\RegistrationService.Data.dll
+C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\RegistrationService.Data\obj\Debug\netstandard2.0\RegistrationService.Data.pdb
+C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\RegistrationService.Data\bin\Debug\netstandard2.0\Microsoft.Azure.Cosmos.ServiceInterop.dll
+C:\Users\dreck\source\repos\RegistrationService.Data\SimpleRegistrationService\RegistrationService.Data\bin\Debug\netstandard2.0\Cosmos.CRTCompat.dll

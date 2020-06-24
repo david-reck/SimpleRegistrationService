@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+  registrationservice.api:
+    image: ${DOCKER_REGISTRY-}registrationserviceapi
+    hostname: registrationservice.api
+    ports: 
+        - 30001:30001
+        - 30021:30021
+    networks:
+        - ipasnetwork
+    build:
+      context: .
+      dockerfile: RegistrationService.API/Dockerfile
+
+networks:
+    ipasnetwork:
+        external:
+            name: ipasnetwork
